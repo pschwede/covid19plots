@@ -1,4 +1,4 @@
-# Plots concerning #COVID-19
+# Concerning #COVID-19
 
 ## German registry for intensive care (DIVI)
 
