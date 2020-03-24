@@ -114,11 +114,12 @@ def __main() -> int:
         try:
             with open(args.outfile, 'r') as outfile:
                 try:
-                    data += pd.read_csv(outfile, sep="\t", index_col=0)
+                    appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True)
+                    data.append(appendix, ignore_index=True)
                 except pd.errors.EmptyDataError:
                     shape = (0, 0)
         except IOError as exc:
-            logging.getLogger().fatal(exc)
+            logging.fatal(exc)
             return 2
     data = data.drop_duplicates()
     logging.debug("shape after: %s", data.shape)
