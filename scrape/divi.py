@@ -116,7 +116,7 @@ def __main() -> int:
                 try:
                     data += pd.read_csv(outfile, sep="\t", index_col=0)
                 except pd.errors.EmptyDataError:
-                    pass
+                    shape = (0, 0)
         except IOError as exc:
             logging.getLogger().fatal(exc)
             return 2
@@ -125,15 +125,15 @@ def __main() -> int:
 
     # Print to stdout unless outfile given.
     if args.outfile:
-        if shape != data.shape:
-            try:
-                with open(args.outfile, 'w') as outfile:
-                    data.to_csv(outfile, sep="\t", header=True)
-                return 0
-            except IOError as exc:
-                logging.getLogger().fatal(exc)
-                return 2
-        return 1
+        if shape == data.shape:
+            return 1
+        try:
+            with open(args.outfile, 'w') as outfile:
+                data.to_csv(outfile, sep="\t", header=True)
+            return 0
+        except IOError as exc:
+            logging.getLogger().fatal(exc)
+            return 2
 
     # workaround pandas issue writing to sys.stdout: https://stackoverflow.com/a/51201819
     output = StringIO()
