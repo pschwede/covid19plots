@@ -13,9 +13,7 @@ ENVACT="env/bin/activate"
 		source $ENVACT
 	fi
 
-	git checkout master \
-		&& git pull origin \
-		&& scrape/divi.py data/divi.tsv \
+		scrape/divi.py data/divi.tsv \
 		&& git add data/divi.tsv \
 		&& git commit -m "upd: newest data" \
 		&& git push origin/master
@@ -23,4 +21,4 @@ ENVACT="env/bin/activate"
 	deactivate
 
 	cd -
-) >&2
+) >&2 2>update.log
