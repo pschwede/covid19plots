@@ -115,7 +115,7 @@ def __main() -> int:
             with open(args.outfile, 'r') as outfile:
                 try:
                     appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True)
-                    data.append(appendix, ignore_index=True)
+                    data = data.append(appendix, ignore_index=True)
                 except pd.errors.EmptyDataError:
                     shape = (0, 0)
         except IOError as exc:
