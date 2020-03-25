@@ -17,7 +17,9 @@ ENVACT="env/bin/activate"
 	&& git commit -m "upd: newest data" \
 	&& git push origin/master
 
-	deactivate
+	if [ -e $ENVACT ]; then
+		deactivate
+	fi
 
 	cd -
 ) 1>&2 2>$HERE/update.log
