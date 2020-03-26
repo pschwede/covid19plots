@@ -7,6 +7,7 @@ Scrape German register for intensive care (DIVI)
 import sys
 import argparse
 import logging
+from typing import Callable
 from datetime import datetime
 from os import path
 from io import StringIO
@@ -17,7 +18,10 @@ import pandas as pd
 import scrape
 
 
-def to_dataframe(html: str) -> pd.DataFrame:
+STRESS_MAPPING = {'green': 1.0, 'yellow': 0.5, 'red': 0.0, 'unavailable': np.nan}.get
+
+
+def to_dataframe(html: str, mapping: Callable[[str], float] = STRESS_MAPPING) -> pd.DataFrame:
     """
     Turn html table into into a pandas DataFrame.
     * respects <small/>-tags in first column
@@ -31,13 +35,12 @@ def to_dataframe(html: str) -> pd.DataFrame:
     Returns:
         A fully functional pandas.DataFrame.
     """
-    stress = {'green': 1.0, 'yellow': 0.5, 'red': 0.0, 'unavailable': np.nan}
-
     result = list()
     table = soupparser.fromstring(html) \
             .xpath("/html/body/div/div/div/div/div/div/form/div/div/table")[0]
 
-    headers = [x.text_content().strip() for x in table.xpath("thead//th")]
+    headers = [x.text_content().strip().replace('¹','').replace('²','').replace('³','') \
+               for x in table.xpath("thead//th")]
     result = {head: [] for head in headers}
 
     for table_row in table.xpath("tbody/tr"):
@@ -56,7 +59,7 @@ def to_dataframe(html: str) -> pd.DataFrame:
             # there are three columns that contain just <span/> tags with specific classes
             spans = cell.xpath("span")
             if spans:
-                cell_content = stress[spans[0].get('class').replace("hr-icon-", '')]
+                cell_content = mapping(spans[0].get('class').replace("hr-icon-", ''))
 
             if i == 6:
                 cell_content = datetime.strptime(cell_content, '%d.%m.%Y %H:%M')
