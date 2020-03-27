@@ -15,7 +15,7 @@ ENVACT="env/bin/activate"
 	scrape/divi.py data/divi.tsv \
 	&& git add data/divi.tsv \
 	&& git commit -m "upd: newest data" \
-	&& git push origin/master
+	&& git push origin
 
 	if [ -e $ENVACT ]; then
 		deactivate
