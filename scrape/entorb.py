@@ -1,20 +1,30 @@
 #!/usr/bin/env python
 
+"""
+Load data from entorb's corona project
+"""
+
 import pandas as pd
 
 def to_dataframe(federal_state) -> pd.DataFrame:
     """
     Load data by @entorb
-    
+
     Args:
-        federal_state: One of DE , BW , BY , BE , BB , HB , HH , HE , MV , NI , NW , RP , SL , SN , ST , SH , TH
-    
+        federal_state: One of DE, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
+
     Returns:
         A fully functional pandas.DataFrame.
     """
-    return pd.read_csv(
-        "https://raw.githubusercontent.com/entorb/COVID-19-Coronavirus-German-Regions/master/data/de-state-%s.tsv" % federal_state,
-        index_col=0,
-        sep="\t",
-        parse_dates=True
-    )
+    result = pd.read_csv(("https://raw.githubusercontent.com/entorb/"
+                          "COVID-19-Coronavirus-German-Regions/master/data/"
+                          "de-states/de-state-BUNDESLAND.tsv").replace("BUNDESLAND", federal_state),
+                         index_col=0,
+                         sep="\t",
+                         parse_dates=True)
+    result['date'] = pd.to_datetime(result['date'], format="%Y-%m-%d")
+    return result.set_index('date')
+
+
+if __name__ == "__main__":
+    print(to_dataframe("SN"))
