@@ -15,13 +15,13 @@ import lxml.html.soupparser as soupparser
 import numpy as np
 import pandas as pd
 
-import scrape
+from scrape import scrape
 
 
 STRESS_MAPPING = {'green': 1.0, 'yellow': 0.5, 'red': 0.0, 'unavailable': np.nan}.get
 
 
-def to_dataframe(html: str, mapping: Callable[[str], float] = STRESS_MAPPING) -> pd.DataFrame:
+def to_dataframe(mapping: Callable[[str], float] = STRESS_MAPPING) -> pd.DataFrame:
     """
     Turn html table into into a pandas DataFrame.
     * respects <small/>-tags in first column
@@ -36,8 +36,23 @@ def to_dataframe(html: str, mapping: Callable[[str], float] = STRESS_MAPPING) ->
         A fully functional pandas.DataFrame.
     """
     result = list()
-    table = soupparser.fromstring(html) \
-            .xpath("/html/body/div/div/div/div/div/div/form/div/div/table")[0]
+    table = soupparser.fromstring(
+        scrape.retry_getting(
+            html="https://divi.de/register/intensivregister?view=items",
+            params={
+                "filter[search]": "",
+                "list[fullordering]": "a.title+ASC",
+                "list[limit]": 0,
+                "filter[federalstate]": 0,
+                "filter[chronosort]": 0,
+                "filter[icu_highcare_state]": "",
+                "filter[ecmo_state]": "",
+                "filter[ards_network]": "",
+                "limitstart": 0,
+                "task": "",
+                "boxchecked": 0,
+                "07b860ef6bacf3cbfc30dc905ef94486": 1})) \
+    .xpath("/html/body/div/div/div/div/div/div/form/div/div/table")[0]
 
     headers = [x.text_content().strip().replace('¹','').replace('²','').replace('³','') \
                for x in table.xpath("thead//th")]
