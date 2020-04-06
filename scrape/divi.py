@@ -8,80 +8,51 @@ import sys
 import argparse
 import logging
 from typing import Callable
-from datetime import datetime
 from os import path
 from io import StringIO
-import lxml.html.soupparser as soupparser
+import requests
 import numpy as np
 import pandas as pd
 
-from scrape import scrape
+
+TRANSLATE_AVAILABILITY = {'VERFUEGBAR': 1.0, 'BEGRENZT': 0.5, 'NICHT_VERFUEGBAR': 0.0, 'UNBEKANNT': np.nan}
+TRANSLATE_FEDERAL_STATE = {
+        'BADEN_WUERTTEMBERG': "BW",
+        'BAYERN': "BY",
+        'BERLIN': "BE",
+        'BRANDENBURG': "BB",
+        'BREMEN': "HB",
+        'HAMBURG': "HH",
+        'HESSEN': "HE",
+        'MECKLENBURG_VORPOMMERN': "MV",
+        'NIEDERSACHSEN': "NI",
+        'NORDRHEIN_WESTFALEN': "NW",
+        'RHEINLAND_PFALZ': "RP",
+        'SAARLAND': "SL",
+        'SACHSEN': "SN",
+        'SACHSEN_ANHALT': "ST",
+        'SCHLESWIG_HOLSTEIN': "SH",
+        'THUERINGEN': "TH",
+        }
 
 
-STRESS_MAPPING = {'green': 1.0, 'yellow': 0.5, 'red': 0.0, 'unavailable': np.nan}.get
-
-
-def to_dataframe(mapping: Callable[[str], float] = STRESS_MAPPING) -> pd.DataFrame:
-    """
-    Turn html table into into a pandas DataFrame.
-    * respects <small/>-tags in first column
-    * respects classes of <span/>-tags in columns where there's no content
-    * empty cells will be contained as empty strings `""`
-    * converts dates in last column to datetime objects
-
-    Args:
-        html: string that contains HTML with a table.
-
-    Returns:
-        A fully functional pandas.DataFrame.
-    """
-    result = list()
-    table = soupparser.fromstring(
-        scrape.retry_getting(
-            html="https://divi.de/register/intensivregister?view=items",
-            params={
-                "filter[search]": "",
-                "list[fullordering]": "a.title+ASC",
-                "list[limit]": 0,
-                "filter[federalstate]": 0,
-                "filter[chronosort]": 0,
-                "filter[icu_highcare_state]": "",
-                "filter[ecmo_state]": "",
-                "filter[ards_network]": "",
-                "limitstart": 0,
-                "task": "",
-                "boxchecked": 0,
-                "07b860ef6bacf3cbfc30dc905ef94486": 1})) \
-    .xpath("/html/body/div/div/div/div/div/div/form/div/div/table")[0]
-
-    headers = [x.text_content().strip().replace('¹','').replace('²','').replace('³','') \
-               for x in table.xpath("thead//th")]
-    result = {head: [] for head in headers}
-
-    for table_row in table.xpath("tbody/tr"):
-        for i, cell in enumerate(table_row.xpath("td")):
-            cell_content = cell.text_content().replace("\n", " ")
-
-            # first column contains <small/> tags
-            if i == 0:
-                smalls = cell.xpath("small")
-                texts = [cell.text]
-                texts += [s.text for s in smalls if len(s) and s.text]
-                cell_content = ", ".join(texts)
-
-            cell_content = cell_content.strip()
-
-            # there are three columns that contain just <span/> tags with specific classes
-            spans = cell.xpath("span")
-            if spans:
-                cell_content = mapping(spans[0].get('class').replace("hr-icon-", ''))
-
-            if i == 6:
-                cell_content = datetime.strptime(cell_content, '%d.%m.%Y %H:%M')
-
-            result[headers[i]].append(cell_content)
-
-    return pd.DataFrame(result)
+def to_dataframe(mapping: Callable[[str], float] = TRANSLATE_AVAILABILITY.get) -> pd.DataFrame:
+    response = requests.get("https://www.intensivregister.de/api/public/intensivregister?page=0&size=2000")
+    response_json = response.json()
+    headers = ['Klinikname', 'Bundesland', 'ICU low care', 'ICU high care', 'ECMO', 'Stand', 'COVID-19 cases']
+    columns = {h: [] for h in headers}
+    for row in response_json['data']:
+        columns[headers[0]].append(row['krankenhausStandort']['bezeichnung'])
+        columns[headers[1]].append(TRANSLATE_FEDERAL_STATE[row['krankenhausStandort']['bundesland']])
+        columns[headers[2]].append(mapping(row['bettenStatus']['statusLowCare']))
+        columns[headers[3]].append(mapping(row['bettenStatus']['statusHighCare']))
+        columns[headers[4]].append(mapping(row['bettenStatus']['statusECMO']))
+        columns[headers[5]].append(row['meldezeitpunkt'])
+        columns[headers[6]].append(row['faelleCovidAktuell'])
+    result = pd.DataFrame(columns, columns=headers)
+    result['Stand'] = pd.to_datetime(result['Stand'])
+    result = result.set_index('Stand')
+    return result.drop_duplicates().tz_localize(None)
 
 
 def __main() -> int:
@@ -109,33 +80,18 @@ def __main() -> int:
                         if args.verbose < 3 else logging.DEBUG)
 
     # Download recent data
-    html = scrape.retry_getting(
-        html="https://divi.de/register/intensivregister?view=items",
-        params={"filter[search]": "",
-                "list[fullordering]": "a.title+ASC",
-                "list[limit]": 0,
-                "filter[federalstate]": 0,
-                "filter[chronosort]": 0,
-                "filter[icu_highcare_state]": "",
-                "filter[ecmo_state]": "",
-                "filter[ards_network]": "",
-                "limitstart": 0,
-                "task": "",
-                "boxchecked": 0,
-                "07b860ef6bacf3cbfc30dc905ef94486": 1})
-    data = to_dataframe(html)
+    data = to_dataframe()
 
     # Append existing data
-    shape = data.shape
-    logging.debug("shape before: %s", shape)
+    logging.debug("shape before: %s", data.shape)
     if args.outfile and path.exists(args.outfile):
+        logging.debug("loading file %s" % args.outfile)
         try:
             with open(args.outfile, 'r') as outfile:
-                try:
-                    appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True)
-                    data = data.append(appendix, ignore_index=True)
-                except pd.errors.EmptyDataError:
-                    shape = (0, 0)
+                appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True)
+                data = data.append(appendix, ignore_index=True)
+        except pd.errors.EmptyDataError as exc:
+            logging.debug(exc)
         except IOError as exc:
             logging.fatal(exc)
             return 2
@@ -143,23 +99,23 @@ def __main() -> int:
     logging.debug("shape after: %s", data.shape)
 
     # Print to stdout unless outfile given.
-    if args.outfile:
-        if shape == data.shape:
-            return 1
-        try:
-            with open(args.outfile, 'w') as outfile:
-                data.to_csv(outfile, sep="\t", header=True)
-            return 0
-        except IOError as exc:
-            logging.getLogger().fatal(exc)
-            return 2
+    if not args.outfile:
+        # workaround pandas issue writing to sys.stdout: https://stackoverflow.com/a/51201819
+        logging.debug("writing to stdout")
+        output = StringIO()
+        data.to_csv(output, sep="\t", header=True)
+        output.seek(0)
+        print(output.read())
+        return 0
 
-    # workaround pandas issue writing to sys.stdout: https://stackoverflow.com/a/51201819
-    output = StringIO()
-    data.to_csv(output, sep="\t", header=True)
-    output.seek(0)
-    print(output.read())
-    return 0
+    logging.debug("writing to %s" % args.outfile)
+    try:
+        with open(args.outfile, 'w') as outfile:
+            data.to_csv(outfile, sep="\t", header=True)
+        return 0
+    except IOError as exc:
+        logging.getLogger().fatal(exc)
+        return 2
 
 
 if __name__ == "__main__":
