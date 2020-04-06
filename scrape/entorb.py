@@ -20,10 +20,9 @@ def to_dataframe(federal_state) -> pd.DataFrame:
                           "COVID-19-Coronavirus-German-Regions/master/data/"
                           "de-states/de-state-BUNDESLAND.tsv").replace("BUNDESLAND", federal_state),
                          index_col=0,
-                         sep="\t",
-                         parse_dates=True)
-    result['date'] = pd.to_datetime(result['date'], format="%Y-%m-%d")
-    return result.set_index('date')
+                         sep="\t")
+    result['Date'] = pd.to_datetime(result['Date'], format="%Y-%m-%d")
+    return result.set_index('Date')
 
 
 if __name__ == "__main__":
