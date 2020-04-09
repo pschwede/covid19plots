@@ -80,7 +80,7 @@ def __main() -> int:
                         if args.verbose < 3 else logging.DEBUG)
 
     # Download recent data
-    data = to_dataframe()
+    data = to_dataframe().reset_index()
 
     # Append existing data
     logging.debug("shape before: %s", data.shape)
@@ -88,14 +88,15 @@ def __main() -> int:
         logging.debug("loading file %s" % args.outfile)
         try:
             with open(args.outfile, 'r') as outfile:
-                appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True)
+                appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True) \
+                        .drop(columns=['Stand'])
                 data = data.append(appendix, ignore_index=True)
         except pd.errors.EmptyDataError as exc:
             logging.debug(exc)
         except IOError as exc:
             logging.fatal(exc)
             return 2
-    data = data.drop_duplicates()
+    data = data.drop_duplicates().set_index('Stand')
     logging.debug("shape after: %s", data.shape)
 
     # Print to stdout unless outfile given.
