@@ -8,6 +8,24 @@ from time import sleep
 
 import requests
 
+federal_state_translation = {
+    "BB": "Brandenburg",
+    "BE": "Berlin",
+    "BW": "Baden-Württemberg",
+    "BY": "Bayern",
+    "HB": "Bremen",
+    "HE": "Hessen",
+    "HH": "Hamburg",
+    "MV": "Mecklenburg-Vorpommern",
+    "NI": "Niedersachsen",
+    "NW": "Nordrhein-Westfalen",
+    "RP": "Rheinland-Pfalz",
+    "SH": "Schleswig-Holstein",
+    "SL": "Saarland",
+    "SN": "Sachsen",
+    "ST": "Sachsen-Anhalt",
+    "TH": "Thüringen",
+}
 
 def retry_getting(html: str = None,
                   json: str = None,

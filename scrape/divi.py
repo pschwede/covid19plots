@@ -39,7 +39,7 @@ TRANSLATE_FEDERAL_STATE = {
 def to_dataframe(mapping: Callable[[str], float] = TRANSLATE_AVAILABILITY.get) -> pd.DataFrame:
     response = requests.get("https://www.intensivregister.de/api/public/intensivregister?page=0&size=2000")
     response_json = response.json()
-    headers = ['Klinikname', 'Bundesland', 'ICU low care', 'ICU high care', 'ECMO', 'Stand', 'COVID-19 cases']
+    headers = ['Klinikname', 'Bundesland', 'ICU low care', 'ICU high care', 'ECMO', 'Stand']
     columns = {h: [] for h in headers}
     for row in response_json['data']:
         columns[headers[0]].append(row['krankenhausStandort']['bezeichnung'])
@@ -48,7 +48,6 @@ def to_dataframe(mapping: Callable[[str], float] = TRANSLATE_AVAILABILITY.get) -
         columns[headers[3]].append(mapping(row['bettenStatus']['statusHighCare']))
         columns[headers[4]].append(mapping(row['bettenStatus']['statusECMO']))
         columns[headers[5]].append(row['meldezeitpunkt'])
-        columns[headers[6]].append(row['faelleCovidAktuell'])
     result = pd.DataFrame(columns, columns=headers)
     result['Stand'] = pd.to_datetime(result['Stand'])
     result = result.set_index('Stand')
