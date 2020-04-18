@@ -7,6 +7,7 @@ Scrape German register for intensive care (DIVI)
 import sys
 import argparse
 import logging
+from datetime import datetime
 from typing import Callable
 from os import path
 from io import StringIO
@@ -80,6 +81,7 @@ def __main() -> int:
 
     # Download recent data
     data = to_dataframe().reset_index()
+    data['Stand'] = [datetime.now()]*len(data.index)
 
     # Append existing data
     logging.debug("shape before: %s", data.shape)
@@ -87,8 +89,8 @@ def __main() -> int:
         logging.debug("loading file %s" % args.outfile)
         try:
             with open(args.outfile, 'r') as outfile:
-                appendix = pd.read_csv(outfile, sep="\t", index_col=0, parse_dates=True) \
-                        .drop(columns=['Stand'])
+                appendix = pd.read_csv(outfile, sep="\t")
+                appendix.set_index('Stand')
                 data = data.append(appendix, ignore_index=True)
         except pd.errors.EmptyDataError as exc:
             logging.debug(exc)
