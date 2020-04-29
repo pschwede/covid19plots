@@ -25,7 +25,7 @@ def to_dataframe(federal_state=None, nation=None) -> pd.DataFrame:
     elif nation:
         url = ("https://raw.githubusercontent.com/entorb/"
                "COVID-19-Coronavirus-German-Regions/master/data/"
-               "int/country-NATION.json").replace("NATION", nation)
+               "int/country-NATION.tsv").replace("NATION", nation)
     else:
         raise Exception("Neither `federal_state` nor `country` given.")
     result = pd.read_csv(url, index_col=0, sep="\t")
