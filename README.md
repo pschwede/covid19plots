@@ -8,6 +8,10 @@ Did you know that apparently 3x more people per million died due to COVID-19 in 
 
 What's the logistic reproduction rate for each German federal state? [repro.ipynb](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb)
 
+#### Projection
+
+What will the COVID-19 future look like? [projection.ipynb](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb)
+
 #### Total VS Week
 
 They (who?) say that a turn in [a curve like these](https://aatishb.com/covidtrends/) signals a stopping pandemy: The more people get infected, the more people should get infected per week. However, if that trend seises to continue, the vicious circle has been stopped. See [sum_vs_window.ipynb](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) for how German federal states behave.
