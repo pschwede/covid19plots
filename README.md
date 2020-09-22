@@ -8,6 +8,10 @@ Did you know that apparently 3x more people per million died due to COVID-19 in 
 
 What's the logistic reproduction rate for each German federal state? [repro.ipynb](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb)
 
+#### Mortality rate
+
+Most deaths happen after days after being diagnosed positively for COVID-19. [mortality.ipynb](https://github.com/pschwede/covid19plots/blob/master/mortality.ipynb) assumes that time span being 14 days across all patients. (Also see [scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb))
+
 #### Projection
 
 What will the COVID-19 future look like? [projection.ipynb](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb)
