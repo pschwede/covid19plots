@@ -16,6 +16,8 @@ Most deaths happen after days after being diagnosed positively for COVID-19. [mo
 
 What will the COVID-19 future look like? [projection.ipynb](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb)
 
+A similar but slightly different approach: https://www.sciencedirect.com/science/article/pii/S1201971220303039
+
 #### Total VS Week
 
 They (who?) say that a turn in [a curve like these](https://aatishb.com/covidtrends/) signals a stopping pandemy: The more people get infected, the more people should get infected per week. However, if that trend seises to continue, the vicious circle has been stopped. See [sum_vs_window.ipynb](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) for how German federal states behave.
