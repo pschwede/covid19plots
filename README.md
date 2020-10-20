@@ -29,8 +29,7 @@ They (who?) say that a turn in [a curve like these](https://aatishb.com/covidtre
 #### General
 [scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) also includes an attempt to model the total number of deaths using the total number of cases.
 
-#### COVID-19 VS Fertility rate
-[fertility.ipynb](https://github.com/pschwede/covid19plots/blob/master/fertility.ipynb) looks for fertility rates of German federal states correlated with COVID-19 cases. R²=0.311 is low.
+Do corona virus spreaders like youngsters immunitize the oldr population against COVID19? [correlate.ipynb](https://github.com/pschwede/covid19plots/blob/master/correlate.ipynb) looks for fertility rates of German federal states VS COVID-19 cases.
 
 #### German registry for intensive care (DIVI)
 
