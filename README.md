@@ -10,7 +10,7 @@ What's the logistic reproduction rate for each German federal state? [repro.ipyn
 
 #### Mortality rate
 
-Most deaths happen after days after being diagnosed positively for COVID-19. [mortality.ipynb](https://github.com/pschwede/covid19plots/blob/master/mortality.ipynb) assumes that time span being 14 days across all patients. (Also see [scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb))
+Most deaths happen after days after being diagnosed positively for COVID-19. [letality.ipynb](https://github.com/pschwede/covid19plots/blob/master/letality.ipynb) assumes that time span being 14 days across all patients. (Also see [scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb))
 
 #### Projection
 
