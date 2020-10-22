@@ -6,9 +6,9 @@
 
 #### Trends
 
-[**Reproduction Rate:**](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb) How fast is the virus spreading?
+[**Reproduction:**](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb) How fast is the virus spreading?
 
-[**Mortality Rate:**](https://github.com/pschwede/covid19plots/blob/master/letality.ipynb) How many die after their positive COVID-19 diagnosis?
+[**Letality:**](https://github.com/pschwede/covid19plots/blob/master/letality.ipynb) How likely does one die after a positive COVID-19 diagnosis?
 
 [**Countries in Comparison:**](https://github.com/pschwede/covid19plots/blob/master/countries_in_comparison.ipynb) Did you know that apparently ~3x~ 5x more people per million died due to COVID-19 in Sweden than in Germany?
 
