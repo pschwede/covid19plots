@@ -16,8 +16,8 @@
 
 [**Total VS Week:**](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) It's a simple thought: The more people have been infected, the more people should get infected the next week. However, as soon the relation seises to hold, the vicious circle stops. I plot [those graphs](https://aatishb.com/covidtrends/) for German federal states.
 
+[**German Registry for Intensive Care (DIVI):**](https://github.com/pschwede/covid19plots/blob/master/scrape_divi.ipynb) Did German hospitals exceed their [capacity](https://www.intensivregister.de/#/intensivregister) recently? I scraped their [data](https://raw.githubusercontent.com/pschwede/covid19plots/master/data/divi.tsv) for plots. (I dont't do scraping anymore, though!)
+
 #### Speculation
 
 [**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
-
-[**German Registry for Intensive Care (DIVI):**](https://github.com/pschwede/covid19plots/blob/master/scrape_divi.ipynb) Did German hospitals exceed their [capacity](https://www.intensivregister.de/#/intensivregister) recently? I scraped their [data](https://raw.githubusercontent.com/pschwede/covid19plots/master/data/divi.tsv) for plots. (No more updates, though!)
