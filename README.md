@@ -14,7 +14,7 @@
 
 [**German Headlines**](https://github.com/pschwede/covid19plots/blob/master/topst_headlines.ipynb) How did media react to COVID-19?
 
-[**Total VS Week:**](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) It's a simple thought: The more people have been infected, the more people should get infected the next week. However, as soon the relation seises to hold, the vicious circle stops. I plot [those graphs](https://aatishb.com/covidtrends/) for German federal states.
+[**Total VS Week:**](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) It's a simple thought: The more people have been infected, the more people should get infected the next week. However, as soon the relation ceases to hold, the vicious circle stops. I plot [those graphs](https://aatishb.com/covidtrends/) for German federal states.
 
 [**German Registry for Intensive Care (DIVI):**](https://github.com/pschwede/covid19plots/blob/master/scrape_divi.ipynb) Did German hospitals exceed their [capacity](https://www.intensivregister.de/#/intensivregister) recently? I scraped their [data](https://raw.githubusercontent.com/pschwede/covid19plots/master/data/divi.tsv) for plots. (I dont't do scraping anymore, though!)
 
