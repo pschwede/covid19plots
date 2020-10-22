@@ -1,42 +1,23 @@
-# Trends
+#### Correlations
 
-#### Countries in comparison
+[**Scatter-Matrix:**](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) Does the number of cases in intensive care correlate to positive diagnoses? Also, how many days remain until death?
 
-Did you know that apparently 3x more people per million died due to COVID-19 in Sweden than in Germany? [countries_in_comparison.ipynb](https://github.com/pschwede/covid19plots/blob/master/countries_in_comparison.ipynb)
+[**Correlate World Data:**](https://github.com/pschwede/covid19plots/blob/master/correlate.ipynb) Where in the world hits COVID-19 the hardest and why?
 
-#### Reproduction rate
+#### Trends
 
-What's the logistic reproduction rate for each German federal state? [repro.ipynb](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb)
+[**Reproduction Rate:**](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb) How fast is the virus spreading?
 
-#### Mortality rate
+[**Mortality Rate:**](https://github.com/pschwede/covid19plots/blob/master/letality.ipynb) How many die after their positive COVID-19 diagnosis?
 
-Most deaths happen after days after being diagnosed positively for COVID-19. [letality.ipynb](https://github.com/pschwede/covid19plots/blob/master/letality.ipynb) assumes that time span being 14 days across all patients. (Also see [scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb))
+[**Countries in Comparison:**](https://github.com/pschwede/covid19plots/blob/master/countries_in_comparison.ipynb) Did you know that apparently ~3x~ 5x more people per million died due to COVID-19 in Sweden than in Germany?
 
-#### Projection
+[**German Headlines**](https://github.com/pschwede/covid19plots/blob/master/topst_headlines.ipynb) How did media react to COVID-19?
 
-What will the COVID-19 future look like? [projection.ipynb](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb)
+[**Total VS Week:**](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) It's a simple thought: The more people have been infected, the more people should get infected the next week. However, as soon the relation seises to hold, the vicious circle stops. I plot [those graphs](https://aatishb.com/covidtrends/) for German federal states.
 
-A similar approaches:
+#### Speculation
 
-* https://www.sciencedirect.com/science/article/pii/S1201971220303039
-* https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26
-#### Total VS Week
+[**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
 
-They (who?) say that a turn in [a curve like these](https://aatishb.com/covidtrends/) signals a stopping pandemy: The more people get infected, the more people should get infected per week. However, if that trend seises to continue, the vicious circle has been stopped. See [sum_vs_window.ipynb](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) for how German federal states behave.
-
-# Correlations
-
-#### General
-[scatter_matrix.ipynb](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) also includes an attempt to model the total number of deaths using the total number of cases.
-
-Do corona virus spreaders like youngsters immunitize the oldr population against COVID19? [correlate.ipynb](https://github.com/pschwede/covid19plots/blob/master/correlate.ipynb) looks for fertility rates of German federal states VS COVID-19 cases.
-
-#### German registry for intensive care (DIVI)
-
-Did German hospitals exceed their capacity recently? I scraped alert data from [German registry for intensive care (DIVI)](https://www.intensivregister.de/#/intensivregister). To scrape it yourself, simply run `scrape/divi.py <outfile>`. However, feel free to use [the already scraped and ~~continuously~~ updated data](https://raw.githubusercontent.com/pschwede/covid19plots/master/data/divi.tsv). Also see [scrape_divi.ipynb](https://github.com/pschwede/covid19plots/blob/master/scrape_divi.ipynb) for plots.
-
-# Other
-
-#### German top headlines
-
-How did media react to COVID-19? See [topst_headlines](https://github.com/pschwede/covid19plots/blob/master/topst_headlines.ipynb).
+[**German Registry for Intensive Care (DIVI):**](https://github.com/pschwede/covid19plots/blob/master/scrape_divi.ipynb) Did German hospitals exceed their [capacity](https://www.intensivregister.de/#/intensivregister) recently? I scraped their [data](https://raw.githubusercontent.com/pschwede/covid19plots/master/data/divi.tsv) for plots. (No more updates, though!)
