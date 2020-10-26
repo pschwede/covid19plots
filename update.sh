@@ -16,6 +16,15 @@ ENVACT="env/bin/activate"
 	&& git add data/divi.tsv \
 	&& git commit -m "upd: newest data"
 
+	bin/repro.py plot_rki_and_logistic img/rki_and_logistic.svg
+	bin/repro.py logistic_bars img/logistic_bars.svg
+	bin/repro.py rki_bars img/rki_bars.svg
+	bin/repro.py plot_press_chronic img/plot_press_chronic.svg
+	bin/letality.py img/letality.svg
+	bin/projection.py img/projection.svg
+
+	git add img/*.*
+
 	./run-notebooks.py \
 	&& git add *.ipynb \
 	&& git commit -m "upd: data"

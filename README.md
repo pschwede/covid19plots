@@ -6,7 +6,7 @@
 
 #### Trends
 
-[**Reproduction:**](https://github.com/pschwede/covid19plots/blob/master/repro.ipynb) How fast is the virus spreading?
+[**Reproduction:**](https://github.com/pschwede/covid19plots/blob/master/repro.md) How fast is the virus spreading?
 
 [**Letality:**](https://github.com/pschwede/covid19plots/blob/master/letality.md) How likely does one die after a positive COVID-19 diagnosis?
 
@@ -20,4 +20,4 @@
 
 #### Speculation
 
-[**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/projection.ipynb) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
+[**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/projection.md) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
