@@ -1,3 +1,3 @@
 #### Letality
 
-![Chart 1](img/letality.svg)
+![Letality chart](img/letality.svg)
