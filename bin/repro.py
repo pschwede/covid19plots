@@ -107,6 +107,31 @@ def plot_rki_and_logistic_total(state='DE-total'):
     fig.set_size_inches(16,9)
     return fig
 
+def plot_():
+    lasts = []
+    lasts_rki = []
+    areas = sorted([x for x in fst])
+    fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
+    for i, (ax, area) in enumerate(zip(axes.flat, areas)):
+        de = entorb.to_dataframe(area).rolling('7D').mean()
+        
+        rs = polynomial_r(de, population[fst[area]])
+        lasts.append(rs[col].tail(1).values[0])
+        
+        ax.plot(range(-len(rs.index), 0), rs[col])
+        ax.set_title(\"%s (%d Ew.)\" % (fst[area], population[fst[area]]))
+        ax.set_xlabel('')
+        ax.set_xlim(-len(rs.index), 0)
+        ax.set_ylim(0, 3)
+        
+        rs = rki_r(de)
+        lasts_rki.append(rs[col].tail(1).values[0])
+        
+        ax.plot(range(-len(rs.index), 0), rs[col])
+        
+    fig.set_size_inches(16,16)
+    fig.set_facecolor('w')
+    return fig, lasts, lasts_rki
 
 def plot_weekly_r(col='Cases', ncols=4):
     """
@@ -141,7 +166,7 @@ def plot_weekly_r(col='Cases', ncols=4):
     return fig
 
 
-def plot_r(col='Cases', ncols=4):
+def plot_rki_and_logistic(col='Cases', ncols=4):
     """
     Plot of reproduction of <col>
     
@@ -150,7 +175,7 @@ def plot_r(col='Cases', ncols=4):
         ncols: Columns of charts of resulting figure.
 
     Return:
-        Figure
+        Tuple of a Figure, a list of last logistical rates and a list of last rki values
     """
     lasts = []
     lasts_rki = []
@@ -175,8 +200,49 @@ def plot_r(col='Cases', ncols=4):
 
     fig.set_size_inches(16,16)
     fig.set_facecolor('w')
-    return lasts, lasts_rki
+    return fig, lasts, lasts_rki
 
+def logistic_bars(lasts, title='Infektionen'):
+    current_r = pd.DataFrame({'Logistic': lasts}, index=[fst[x] for x in sorted([y for y in fst])]).sort_values('Logistic')
+    current_r.plot(kind='barh',
+                   xlim=(min(1.0, min(lasts)), max(lasts)),
+                   legend=False, grid=False,
+                   title=\"Die Bundesländer im Rennen auf R=1.0 (Logistisch, %s, Stand: %s)\" % (title, datetime.now().strftime('%Y-%m-%d')))
+
+def rki_bars(lasts_rki, title='Infektionen'):
+    current_r = pd.DataFrame({'RKI': lasts_rki}, index=[fst[x] for x in sorted([y for y in fst])]).sort_values('RKI')
+    current_r.plot(kind='barh',
+                   xlim=(min(0.0, min(lasts_rki)), max(lasts_rki)),
+                   legend=False, grid=False,
+                   title=\"Die Bundesländer im Rennen auf R=0.0 (RKI, %s, Stand: %s)\" % (title, datetime.now().strftime('%Y-%m-%d')))"
+
+def plot_press_chronic():
+    de = entorb.to_dataframe('DE-total')
+    
+    rs1 = polynomial_r(de)
+    rs2 = rki_r(de)
+    news = pd.read_csv('data/chronic_de.tsv', sep=\"\\t\", usecols=['Datum', 'Ereignis'])
+    news['Datum'] = pd.to_datetime(news['Datum'], format='%Y-%m-%d')
+    news = news.set_index('Datum')
+
+    shifted1 = rs1['Cases'].shift(-DAYS_INFECTION_TILL_SYMPTOM)
+    shifted2 = rs2['Cases'].shift(-DAYS_INFECTION_TILL_SYMPTOM)
+    fig, ax = plt.subplots()
+    ax.plot(shifted1, shifted1.index, label='Logistisch')
+    ax.plot(shifted2, shifted2.index, label='RKI')
+    ax.set_title(\"Fall-Rate (%d Tage vorversetzt). Links: COVID-19-Chronik der FAZ\" % DAYS_INFECTION_TILL_SYMPTOM)
+    ax.set_yticks(news.index)
+    ax.set_ylim(news.index.max() + timedelta(days=4), shifted1.index.min())
+    ax.set_yticklabels(news['Ereignis'])
+    ax.grid()
+    ax.set_ylabel('')
+                 
+    plt.legend(loc='lower right')
+                 
+    fig.set_facecolor('w')
+    fig.set_size_inches(9,16)
+    
+    return fig
 
 def main():
     import sys
