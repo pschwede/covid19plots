@@ -8,7 +8,7 @@ Solving for r, I [got](https://www.wolframalpha.com/input/?i=Solve+n%28t%2B1%29+
 
 `r = n(t+1) / (n(t)-n²(t))`
 
-This r-value has a way smoother curve (blue) than the 4-days incidence (yellow), the RKI first suggested:
+This r-value has a way smoother curve (red) than the 4-days incidence (blue), the RKI first suggested:
 
 ![RKI & Logistic Rates Chart](img/rki_and_logistic.svg)
 
