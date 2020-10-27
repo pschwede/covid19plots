@@ -13,22 +13,19 @@ ENVACT="env/bin/activate"
 	fi
 
 	scrape/divi.py data/divi.tsv \
-	&& git add data/divi.tsv \
-	&& git commit -m "upd: newest data"
+	&& git add data/divi.tsv
 
-	bin/repro.py plot_rki_and_logistic img/rki_and_logistic.svg
-	bin/repro.py logistic_bars img/logistic_bars.svg
-	bin/repro.py rki_bars img/rki_bars.svg
-	bin/repro.py plot_press_chronic img/plot_press_chronic.svg
-	bin/letality.py img/letality.svg
-	bin/projection.py img/projection.svg
+        time bin/repro.py \
+		plot_rki_and_logistic img/rki_and_logistic.svg \
+		logistic_bars img/logistic_bars.svg \
+		rki_bars img/rki_bars.svg \
+		plot_press_chronic img/plot_press_chronic.svg
+        time bin/letality.py img/letality.svg
+        time bin/projection.py img/projection.svg
 
 	git add img/*.*
 
-	./run-notebooks.py \
-	&& git add *.ipynb \
-	&& git commit -m "upd: data"
-
+	git commit -m "upd: data"
 	git push origin
 
 	if [ -e $ENVACT ]; then

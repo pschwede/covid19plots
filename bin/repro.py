@@ -3,14 +3,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scrape.scrape import federal_state_translation as fst
+from datetime import datetime, timedelta
 from matplotlib import dates as mdates
 
 from scrape import entorb
-from common import DE_STATE_POPULATION, DAYS_INFECTION_TILL_SYMPTOM, DAYS_SYMPTOMS_TILL_DEATH
+from common import DE_POPULATION, DE_STATE_POPULATION, DE_STATE_NAMES, DAYS_INFECTION_TILL_SYMPTOM, DAYS_SYMPTOMS_TILL_DEATH
 
 
-def polynomial_r(df, population=DE_STATE_POPULATION, generation_time=DAYS_INFECTION_TILL_SYMPTOM):
+def polynomial_r(df, population=DE_POPULATION, generation_time=DAYS_INFECTION_TILL_SYMPTOM):
     """
     Reproduction rate using logistic map
 
@@ -107,19 +107,19 @@ def plot_rki_and_logistic_total(state='DE-total'):
     fig.set_size_inches(16,9)
     return fig
 
-def plot_():
+def plot_r(population=DE_POPULATION):
     lasts = []
     lasts_rki = []
-    areas = sorted([x for x in fst])
+    areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area).rolling('7D').mean()
         
-        rs = polynomial_r(de, population[fst[area]])
+        rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
         lasts.append(rs[col].tail(1).values[0])
         
         ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s (%d Ew.)" % (fst[area], population[fst[area]]))
+        ax.set_title("%s (%d Ew.)" % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
         ax.set_xlabel('')
         ax.set_xlim(-len(rs.index), 0)
         ax.set_ylim(0, 3)
@@ -146,7 +146,7 @@ def plot_weekly_r(col='Cases', ncols=4):
     """
     lasts = []
     lasts_rki = []
-    areas = sorted([x for x in fst])
+    areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area)
@@ -155,7 +155,7 @@ def plot_weekly_r(col='Cases', ncols=4):
         lasts.append(rs[col].tail(1).values[0])
 
         ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s" % fst[area])
+        ax.set_title("%s" % DE_STATE_NAMES[area])
 
         rs[col].plot(ax=ax, kind='bar')
 
@@ -166,7 +166,7 @@ def plot_weekly_r(col='Cases', ncols=4):
     return fig
 
 
-def plot_rki_and_logistic(col='Cases', ncols=4):
+def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
     """
     Plot of reproduction of <col>
     
@@ -179,16 +179,16 @@ def plot_rki_and_logistic(col='Cases', ncols=4):
     """
     lasts = []
     lasts_rki = []
-    areas = sorted([x for x in fst])
+    areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area).rolling('7D').mean()
 
-        rs = polynomial_r(de, population[fst[area]])
+        rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
         lasts.append(rs[col].tail(1).values[0])
 
         ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s (%d Ew.)" % (fst[area], population[fst[area]]))
+        ax.set_title("%s (%d Ew.)" % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
         ax.set_xlabel('')
         ax.set_xlim(-len(rs.index), 0)
         ax.set_ylim(0, 3)
@@ -203,18 +203,20 @@ def plot_rki_and_logistic(col='Cases', ncols=4):
     return fig, lasts, lasts_rki
 
 def logistic_bars(lasts, title='Infektionen'):
-    current_r = pd.DataFrame({'Logistic': lasts}, index=[fst[x] for x in sorted([y for y in fst])]).sort_values('Logistic')
-    current_r.plot(kind='barh',
-                   xlim=(min(1.0, min(lasts)), max(lasts)),
-                   legend=False, grid=False,
-                   title="Die Bundesländer im Rennen auf R=1.0 (Logistisch, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d')))
+    current_r = pd.DataFrame({'Logistic': lasts}, index=[DE_STATE_NAMES[x] for x in sorted([y for y in DE_STATE_NAMES])]).sort_values('Logistic')
+    return current_r.plot(kind='barh',
+            xlim=(min(1.0, min(lasts)), max(lasts)),
+            legend=False, grid=False,
+            title="Die Bundesländer im Rennen auf R=1.0 (Logistisch, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d'))) \
+                    .get_figure()
 
 def rki_bars(lasts_rki, title='Infektionen'):
-    current_r = pd.DataFrame({'RKI': lasts_rki}, index=[fst[x] for x in sorted([y for y in fst])]).sort_values('RKI')
-    current_r.plot(kind='barh',
-                   xlim=(min(0.0, min(lasts_rki)), max(lasts_rki)),
-                   legend=False, grid=False,
-                   title="Die Bundesländer im Rennen auf R=0.0 (RKI, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d')))
+    current_r = pd.DataFrame({'RKI': lasts_rki}, index=[DE_STATE_NAMES[x] for x in sorted([y for y in DE_STATE_NAMES])]).sort_values('RKI')
+    return current_r.plot(kind='barh',
+            xlim=(min(0.0, min(lasts_rki)), max(lasts_rki)),
+            legend=False, grid=False,
+            title="Die Bundesländer im Rennen auf R=0.0 (RKI, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d'))) \
+                            .get_figure()
 
 def plot_press_chronic():
     de = entorb.to_dataframe('DE-total')
@@ -256,6 +258,8 @@ def main():
                 rki_bars, \
                 plot_press_chronic]):
             print("%d: %s%s ", i, x.__name__, x.__doc__)
+        sys.exit(2)
+
     for i in range(1, len(sys.argv), 2):
         if sys.argv[i] in ["0", plot_rki_and_logistic_total.__name__]:
             fig = plot_rki_and_logistic_total()
@@ -269,4 +273,9 @@ def main():
                 fig = rki_bars(lasts_rki)
             elif sys.argv[i] in ["4", plot_press_chronic.__name__]:
                 fig = plot_press_chronic()
-        fig.savefig(sys.argv[ i + 1 ])
+        print("saving", sys.argv[i+1])
+        fig.savefig(sys.argv[i+1])
+    sys.exit(0)
+
+if __name__ == "__main__":
+    main()

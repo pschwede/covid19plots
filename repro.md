@@ -1,4 +1,4 @@
-#### Reproduction rate
+### Reproduction rate
 
 Here, the reproducation rate is computed using the [logistic map](https://en.wikipedia.org/wiki/Logistic_map):
 
@@ -8,3 +8,15 @@ Solving for r, I [got](https://www.wolframalpha.com/input/?i=Solve+n%28t%2B1%29+
 
 `r = n(t+1) / (n(t)-n²(t))`
 
+This r-value has a way smoother curve:
+
+![RKI & Logistic Rates Chart](img/rki_and_logistic.svg)
+
+#### German federated states race against the pandemy
+
+![German districts in the race to 0.0](img/rki_bars.svg)
+![German districts in the race to 1.0](img/logistic_bars.svg)
+
+#### Which messages of the press caused a reduction of `r`?
+
+![Chronology of the first wave next to the rates](img/plot_press_chronic.svg)
