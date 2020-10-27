@@ -119,7 +119,7 @@ def plot_():
         lasts.append(rs[col].tail(1).values[0])
         
         ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title(\"%s (%d Ew.)\" % (fst[area], population[fst[area]]))
+        ax.set_title("%s (%d Ew.)" % (fst[area], population[fst[area]]))
         ax.set_xlabel('')
         ax.set_xlim(-len(rs.index), 0)
         ax.set_ylim(0, 3)
@@ -207,21 +207,21 @@ def logistic_bars(lasts, title='Infektionen'):
     current_r.plot(kind='barh',
                    xlim=(min(1.0, min(lasts)), max(lasts)),
                    legend=False, grid=False,
-                   title=\"Die Bundesländer im Rennen auf R=1.0 (Logistisch, %s, Stand: %s)\" % (title, datetime.now().strftime('%Y-%m-%d')))
+                   title="Die Bundesländer im Rennen auf R=1.0 (Logistisch, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d')))
 
 def rki_bars(lasts_rki, title='Infektionen'):
     current_r = pd.DataFrame({'RKI': lasts_rki}, index=[fst[x] for x in sorted([y for y in fst])]).sort_values('RKI')
     current_r.plot(kind='barh',
                    xlim=(min(0.0, min(lasts_rki)), max(lasts_rki)),
                    legend=False, grid=False,
-                   title=\"Die Bundesländer im Rennen auf R=0.0 (RKI, %s, Stand: %s)\" % (title, datetime.now().strftime('%Y-%m-%d')))"
+                   title="Die Bundesländer im Rennen auf R=0.0 (RKI, %s, Stand: %s)" % (title, datetime.now().strftime('%Y-%m-%d')))
 
 def plot_press_chronic():
     de = entorb.to_dataframe('DE-total')
     
     rs1 = polynomial_r(de)
     rs2 = rki_r(de)
-    news = pd.read_csv('data/chronic_de.tsv', sep=\"\\t\", usecols=['Datum', 'Ereignis'])
+    news = pd.read_csv('data/chronic_de.tsv', sep="\\t", usecols=['Datum', 'Ereignis'])
     news['Datum'] = pd.to_datetime(news['Datum'], format='%Y-%m-%d')
     news = news.set_index('Datum')
 
@@ -230,7 +230,7 @@ def plot_press_chronic():
     fig, ax = plt.subplots()
     ax.plot(shifted1, shifted1.index, label='Logistisch')
     ax.plot(shifted2, shifted2.index, label='RKI')
-    ax.set_title(\"Fall-Rate (%d Tage vorversetzt). Links: COVID-19-Chronik der FAZ\" % DAYS_INFECTION_TILL_SYMPTOM)
+    ax.set_title("Fall-Rate (%d Tage vorversetzt). Links: COVID-19-Chronik der FAZ" % DAYS_INFECTION_TILL_SYMPTOM)
     ax.set_yticks(news.index)
     ax.set_ylim(news.index.max() + timedelta(days=4), shifted1.index.min())
     ax.set_yticklabels(news['Ereignis'])
