@@ -16,6 +16,7 @@ ENVACT="env/bin/activate"
 	&& git add data/divi.tsv
 
         time bin/repro.py \
+		plot_rki_and_logistic_total img/rki_and_logistic_total.svg \
 		plot_rki_and_logistic img/rki_and_logistic.svg \
 		logistic_bars img/logistic_bars.svg \
 		rki_bars img/rki_bars.svg \

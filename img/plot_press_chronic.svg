@@ -2,12 +2,12 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with matplotlib (https://matplotlib.org/) -->
-<svg height="1152pt" version="1.1" viewBox="0 0 648 1152" width="648pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg height="935.059875pt" version="1.1" viewBox="0 0 1136.354687 935.059875" width="1136.354687pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2020-10-27T19:39:25.810657</dc:date>
+    <dc:date>2020-10-27T22:52:43.516231</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -22,42 +22,37 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 1152 
-L 648 1152 
-L 648 0 
-L 0 0 
+   <path d="M -0 935.059875 
+L 1136.354688 935.059875 
+L 1136.354688 0 
+L -0 0 
 z
 " style="fill:#ffffff;"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 81 1025.28 
-L 583.2 1025.28 
-L 583.2 138.24 
-L 81 138.24 
+    <path d="M 626.954687 911.18175 
+L 1129.154688 911.18175 
+L 1129.154688 24.14175 
+L 626.954687 24.14175 
 z
-" style="fill:#ffffff;"/>
+" style="fill:#e5e5e5;"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
-      <path clip-path="url(#p5b3cdef995)" d="M 99.499071 1025.28 
-L 99.499071 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_2">
       <defs>
        <path d="M 0 0 
 L 0 3.5 
-" id="mcccedb93e7" style="stroke:#000000;stroke-width:0.8;"/>
+" id="me1d1cd7321" style="stroke:#555555;stroke-width:0.8;"/>
       </defs>
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="99.499071" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="645.453759" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_1">
       <!-- 0.5 -->
-      <g transform="translate(91.547509 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(637.502196 925.780187)scale(0.1 -0.1)">
        <defs>
         <path d="M 31.78125 66.40625 
 Q 24.171875 66.40625 20.328125 58.90625 
@@ -118,19 +113,14 @@ z
      </g>
     </g>
     <g id="xtick_2">
-     <g id="line2d_3">
-      <path clip-path="url(#p5b3cdef995)" d="M 161.16189 1025.28 
-L 161.16189 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_4">
+     <g id="line2d_2">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="161.16189" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="707.116577" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_2">
       <!-- 1.0 -->
-      <g transform="translate(153.210327 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(699.165015 925.780187)scale(0.1 -0.1)">
        <defs>
         <path d="M 12.40625 8.296875 
 L 28.515625 8.296875 
@@ -153,19 +143,14 @@ z
      </g>
     </g>
     <g id="xtick_3">
-     <g id="line2d_5">
-      <path clip-path="url(#p5b3cdef995)" d="M 222.824708 1025.28 
-L 222.824708 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_6">
+     <g id="line2d_3">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="222.824708" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="768.779396" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_3">
       <!-- 1.5 -->
-      <g transform="translate(214.873146 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(760.827833 925.780187)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-49"/>
        <use x="63.623047" xlink:href="#DejaVuSans-46"/>
        <use x="95.410156" xlink:href="#DejaVuSans-53"/>
@@ -173,19 +158,14 @@ L 222.824708 138.24
      </g>
     </g>
     <g id="xtick_4">
-     <g id="line2d_7">
-      <path clip-path="url(#p5b3cdef995)" d="M 284.487527 1025.28 
-L 284.487527 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_8">
+     <g id="line2d_4">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="284.487527" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="830.442214" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_4">
       <!-- 2.0 -->
-      <g transform="translate(276.535964 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(822.490652 925.780187)scale(0.1 -0.1)">
        <defs>
         <path d="M 19.1875 8.296875 
 L 53.609375 8.296875 
@@ -219,19 +199,14 @@ z
      </g>
     </g>
     <g id="xtick_5">
-     <g id="line2d_9">
-      <path clip-path="url(#p5b3cdef995)" d="M 346.150345 1025.28 
-L 346.150345 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_10">
+     <g id="line2d_5">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="346.150345" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="892.105033" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_5">
       <!-- 2.5 -->
-      <g transform="translate(338.198783 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(884.15347 925.780187)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-50"/>
        <use x="63.623047" xlink:href="#DejaVuSans-46"/>
        <use x="95.410156" xlink:href="#DejaVuSans-53"/>
@@ -239,19 +214,14 @@ L 346.150345 138.24
      </g>
     </g>
     <g id="xtick_6">
-     <g id="line2d_11">
-      <path clip-path="url(#p5b3cdef995)" d="M 407.813163 1025.28 
-L 407.813163 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_12">
+     <g id="line2d_6">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="407.813163" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="953.767851" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_6">
       <!-- 3.0 -->
-      <g transform="translate(399.861601 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(945.816288 925.780187)scale(0.1 -0.1)">
        <defs>
         <path d="M 40.578125 39.3125 
 Q 47.65625 37.796875 51.625 33 
@@ -293,19 +263,14 @@ z
      </g>
     </g>
     <g id="xtick_7">
-     <g id="line2d_13">
-      <path clip-path="url(#p5b3cdef995)" d="M 469.475982 1025.28 
-L 469.475982 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_14">
+     <g id="line2d_7">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="469.475982" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="1015.430669" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_7">
       <!-- 3.5 -->
-      <g transform="translate(461.524419 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(1007.479107 925.780187)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-51"/>
        <use x="63.623047" xlink:href="#DejaVuSans-46"/>
        <use x="95.410156" xlink:href="#DejaVuSans-53"/>
@@ -313,19 +278,14 @@ L 469.475982 138.24
      </g>
     </g>
     <g id="xtick_8">
-     <g id="line2d_15">
-      <path clip-path="url(#p5b3cdef995)" d="M 531.1388 1025.28 
-L 531.1388 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_16">
+     <g id="line2d_8">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="531.1388" xlink:href="#mcccedb93e7" y="1025.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="1077.093488" xlink:href="#me1d1cd7321" y="911.18175"/>
       </g>
      </g>
      <g id="text_8">
       <!-- 4.0 -->
-      <g transform="translate(523.187238 1039.878438)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(1069.141925 925.780187)scale(0.1 -0.1)">
        <defs>
         <path d="M 37.796875 64.3125 
 L 12.890625 25.390625 
@@ -354,24 +314,19 @@ z
    </g>
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
-     <g id="line2d_17">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 138.24 
-L 583.2 138.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_18">
+     <g id="line2d_9">
       <defs>
        <path d="M 0 0 
 L -3.5 0 
-" id="m68f27816dd" style="stroke:#000000;stroke-width:0.8;"/>
+" id="m7f5f2b629d" style="stroke:#555555;stroke-width:0.8;"/>
       </defs>
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="138.24"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="24.14175"/>
       </g>
      </g>
      <g id="text_9">
       <!-- Ausbreitung in Deutschland -->
-      <g transform="translate(-64.717187 142.039219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(481.2375 27.940969)scale(0.1 -0.1)">
        <defs>
         <path d="M 34.1875 63.1875 
 L 20.796875 26.90625 
@@ -740,19 +695,14 @@ z
      </g>
     </g>
     <g id="ytick_2">
-     <g id="line2d_19">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 148.8 
-L 583.2 148.8 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_20">
+     <g id="line2d_10">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="148.8"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="34.70175"/>
       </g>
      </g>
      <g id="text_10">
       <!-- Spahn kündigt Sondersitzung des Gesundheitsausschusses an -->
-      <g transform="translate(-238.084375 152.599219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(307.870312 38.500969)scale(0.1 -0.1)">
        <defs>
         <path d="M 53.515625 70.515625 
 L 53.515625 60.890625 
@@ -975,19 +925,14 @@ z
      </g>
     </g>
     <g id="ytick_3">
-     <g id="line2d_21">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 169.92 
-L 583.2 169.92 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_22">
+     <g id="line2d_11">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="169.92"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="55.82175"/>
       </g>
      </g>
      <g id="text_11">
       <!-- 150 Infizierte in Deutschland nachgewiesen -->
-      <g transform="translate(-145.226562 173.719219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(400.728125 59.620969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 19.671875 72.90625 
@@ -1077,19 +1022,14 @@ z
      </g>
     </g>
     <g id="ytick_4">
-     <g id="line2d_23">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 180.48 
-L 583.2 180.48 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_24">
+     <g id="line2d_12">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="180.48"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="66.38175"/>
       </g>
      </g>
      <g id="text_12">
       <!-- Leipziger Buchmesse wird abgesagt -->
-      <g transform="translate(-106.175 184.279219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(439.779687 70.180969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 19.671875 72.90625 
@@ -1196,19 +1136,14 @@ z
      </g>
     </g>
     <g id="ytick_5">
-     <g id="line2d_25">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 191.04 
-L 583.2 191.04 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_26">
+     <g id="line2d_13">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="191.04"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="76.94175"/>
       </g>
      </g>
      <g id="text_13">
       <!-- Italien schließt die Schulen -->
-      <g transform="translate(-60.623437 194.839219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(485.33125 80.740969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.078125 55.515625 
 Q 9.078125 65.28125 14.90625 70.625 
@@ -1279,19 +1214,14 @@ z
      </g>
     </g>
     <g id="ytick_6">
-     <g id="line2d_27">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 212.16 
-L 583.2 212.16 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_28">
+     <g id="line2d_14">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="212.16"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="98.06175"/>
       </g>
      </g>
      <g id="text_14">
       <!-- Mehr als 500 Infizierte in Deutschland -->
-      <g transform="translate(-116.1375 215.959219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(429.817187 101.860969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 24.515625 72.90625 
@@ -1351,19 +1281,14 @@ z
      </g>
     </g>
     <g id="ytick_7">
-     <g id="line2d_29">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 233.28 
-L 583.2 233.28 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_30">
+     <g id="line2d_15">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="233.28"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="119.18175"/>
       </g>
      </g>
      <g id="text_15">
       <!-- Deutscher stirbt in Ägypten -->
-      <g transform="translate(-64.225 237.834688)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(481.729687 123.736438)scale(0.1 -0.1)">
        <defs>
         <path d="M 34.1875 63.1875 
 L 20.796875 26.90625 
@@ -1437,19 +1362,14 @@ z
      </g>
     </g>
     <g id="ytick_8">
-     <g id="line2d_31">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 243.84 
-L 583.2 243.84 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_32">
+     <g id="line2d_16">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="243.84"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="129.74175"/>
       </g>
      </g>
      <g id="text_16">
       <!-- Zwei Todesfälle in Deutschland -->
-      <g transform="translate(-80.953125 247.639219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(465.001562 133.540969)scale(0.1 -0.1)">
        <defs>
         <path d="M 5.609375 72.90625 
 L 62.890625 72.90625 
@@ -1550,19 +1470,14 @@ z
      </g>
     </g>
     <g id="ytick_9">
-     <g id="line2d_33">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 254.4 
-L 583.2 254.4 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_34">
+     <g id="line2d_17">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="254.4"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="140.30175"/>
       </g>
      </g>
      <g id="text_17">
       <!-- Bundesländer verbieten Großveranstaltung -->
-      <g transform="translate(-143.0125 258.199219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(402.942187 144.100969)scale(0.1 -0.1)">
        <defs>
         <path d="M 2.984375 54.6875 
 L 12.5 54.6875 
@@ -1618,19 +1533,14 @@ z
      </g>
     </g>
     <g id="ytick_10">
-     <g id="line2d_35">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 264.96 
-L 583.2 264.96 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_36">
+     <g id="line2d_18">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="264.96"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="150.86175"/>
       </g>
      </g>
      <g id="text_18">
       <!-- Merkel ergreift das Wort -->
-      <g transform="translate(-46.442188 268.759219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(499.5125 154.660969)scale(0.1 -0.1)">
        <defs>
         <path d="M 3.328125 72.90625 
 L 13.28125 72.90625 
@@ -1676,19 +1586,14 @@ z
      </g>
     </g>
     <g id="ytick_11">
-     <g id="line2d_37">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 275.52 
-L 583.2 275.52 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_38">
+     <g id="line2d_19">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="275.52"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="161.42175"/>
       </g>
      </g>
      <g id="text_19">
       <!-- Trump verbietet Europäern die Einreise -->
-      <g transform="translate(-121.796875 279.319219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(424.157812 165.220969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 55.90625 72.90625 
@@ -1747,19 +1652,14 @@ z
      </g>
     </g>
     <g id="ytick_12">
-     <g id="line2d_39">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 286.08 
-L 583.2 286.08 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_40">
+     <g id="line2d_20">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="286.08"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="171.98175"/>
       </g>
      </g>
      <g id="text_20">
       <!-- Europäische Länder schließen ihre Grenzen -->
-      <g transform="translate(-143.039062 289.879219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(402.915625 175.780969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-69"/>
        <use x="63.183594" xlink:href="#DejaVuSans-117"/>
        <use x="126.5625" xlink:href="#DejaVuSans-114"/>
@@ -1805,19 +1705,14 @@ L 583.2 286.08
      </g>
     </g>
     <g id="ytick_13">
-     <g id="line2d_41">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 307.2 
-L 583.2 307.2 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_42">
+     <g id="line2d_21">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="307.2"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="193.10175"/>
       </g>
      </g>
      <g id="text_21">
       <!-- Deutschland schließt die Grenzen -->
-      <g transform="translate(-94.4 310.999219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(451.554688 196.900969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-68"/>
        <use x="77.001953" xlink:href="#DejaVuSans-101"/>
        <use x="138.525391" xlink:href="#DejaVuSans-117"/>
@@ -1854,19 +1749,14 @@ L 583.2 307.2
      </g>
     </g>
     <g id="ytick_14">
-     <g id="line2d_43">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 328.32 
-L 583.2 328.32 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_44">
+     <g id="line2d_22">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="328.32"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="214.22175"/>
       </g>
      </g>
      <g id="text_22">
       <!-- Gefahrenstufe: "Hoch" [laut RKI] -->
-      <g transform="translate(-88.40625 332.119219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(457.548437 218.020969)scale(0.1 -0.1)">
        <defs>
         <path d="M 11.71875 12.40625 
 L 22.015625 12.40625 
@@ -2001,19 +1891,14 @@ z
      </g>
     </g>
     <g id="ytick_15">
-     <g id="line2d_45">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 338.88 
-L 583.2 338.88 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_46">
+     <g id="line2d_23">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="338.88"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="224.78175"/>
       </g>
      </g>
      <g id="text_23">
       <!-- Bayern verschiebt das Abitur -->
-      <g transform="translate(-71.31875 342.679219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(474.635937 228.580969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-66"/>
        <use x="68.603516" xlink:href="#DejaVuSans-97"/>
        <use x="129.882812" xlink:href="#DejaVuSans-121"/>
@@ -2046,19 +1931,14 @@ L 583.2 338.88
      </g>
     </g>
     <g id="ytick_16">
-     <g id="line2d_47">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 360 
-L 583.2 360 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_48">
+     <g id="line2d_24">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="360"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="245.90175"/>
       </g>
      </g>
      <g id="text_24">
       <!-- Ausgangsbeschränkungen in Bayern und im Saarland -->
-      <g transform="translate(-194.065625 363.799219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(351.889062 249.700969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-65"/>
        <use x="68.408203" xlink:href="#DejaVuSans-117"/>
        <use x="131.787109" xlink:href="#DejaVuSans-115"/>
@@ -2111,19 +1991,14 @@ L 583.2 360
      </g>
     </g>
     <g id="ytick_17">
-     <g id="line2d_49">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 370.56 
-L 583.2 370.56 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_50">
+     <g id="line2d_25">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="370.56"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="256.46175"/>
       </g>
      </g>
      <g id="text_25">
       <!-- Fast 800 Tote an einem Tag in Italien [Triage in Italien] -->
-      <g transform="translate(-196.404688 374.359219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(349.55 260.260969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 51.703125 72.90625 
@@ -2238,19 +2113,14 @@ z
      </g>
     </g>
     <g id="ytick_18">
-     <g id="line2d_51">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 381.12 
-L 583.2 381.12 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_52">
+     <g id="line2d_26">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="381.12"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="267.02175"/>
       </g>
      </g>
      <g id="text_26">
       <!-- Bund beschließt Kontaktverbot -->
-      <g transform="translate(-80.559375 384.919219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(465.395312 270.820969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-66"/>
        <use x="68.603516" xlink:href="#DejaVuSans-117"/>
        <use x="131.982422" xlink:href="#DejaVuSans-110"/>
@@ -2284,19 +2154,14 @@ L 583.2 381.12
      </g>
     </g>
     <g id="ytick_19">
-     <g id="line2d_53">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 391.68 
-L 583.2 391.68 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_54">
+     <g id="line2d_27">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="391.68"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="277.58175"/>
       </g>
      </g>
      <g id="text_27">
       <!-- 156 Milliarden Euro gegen die Krise -->
-      <g transform="translate(-103.7125 395.479219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(442.242188 281.380969)scale(0.1 -0.1)">
        <defs>
         <path d="M 33.015625 40.375 
 Q 26.375 40.375 22.484375 35.828125 
@@ -2368,19 +2233,14 @@ z
      </g>
     </g>
     <g id="ytick_20">
-     <g id="line2d_55">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 402.24 
-L 583.2 402.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_56">
+     <g id="line2d_28">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="402.24"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="288.14175"/>
       </g>
      </g>
      <g id="text_28">
       <!-- Die Olympischen Spiele werden verschoben -->
-      <g transform="translate(-146.167188 406.039219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(399.7875 291.940969)scale(0.1 -0.1)">
        <defs>
         <path d="M 39.40625 66.21875 
 Q 28.65625 66.21875 22.328125 58.203125 
@@ -2448,19 +2308,14 @@ z
      </g>
     </g>
     <g id="ytick_21">
-     <g id="line2d_57">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 433.92 
-L 583.2 433.92 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_58">
+     <g id="line2d_29">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="433.92"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="319.82175"/>
       </g>
      </g>
      <g id="text_29">
       <!-- Boris Johnson positiv getestet - und mehr als 50.000 bestätigte Infizierte in Deutschland -->
-      <g transform="translate(-368.248438 437.719219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(177.70625 323.620969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 19.671875 72.90625 
@@ -2574,19 +2429,14 @@ z
      </g>
     </g>
     <g id="ytick_22">
-     <g id="line2d_59">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 465.6 
-L 583.2 465.6 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_60">
+     <g id="line2d_30">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="465.6"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="351.50175"/>
       </g>
      </g>
      <g id="text_30">
       <!-- Lazarettschiff in New York -->
-      <g transform="translate(-55.085938 469.399219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(490.86875 355.300969)scale(0.1 -0.1)">
        <defs>
         <path d="M 9.8125 72.90625 
 L 23.09375 72.90625 
@@ -2642,19 +2492,14 @@ z
      </g>
     </g>
     <g id="ytick_23">
-     <g id="line2d_61">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 476.16 
-L 583.2 476.16 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_62">
+     <g id="line2d_31">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="476.16"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="362.06175"/>
       </g>
      </g>
      <g id="text_31">
       <!-- Guterres spricht von der "größten Herausforderung seit dem 2. Weltkrieg" -->
-      <g transform="translate(-297.246875 479.959219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(248.707812 365.860969)scale(0.1 -0.1)">
        <defs>
         <path d="M 30.609375 48.390625 
 Q 23.390625 48.390625 19.1875 42.75 
@@ -2764,19 +2609,14 @@ z
      </g>
     </g>
     <g id="ytick_24">
-     <g id="line2d_63">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 518.4 
-L 583.2 518.4 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_64">
+     <g id="line2d_32">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="518.4"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="404.30175"/>
       </g>
      </g>
      <g id="text_32">
       <!-- 200.000 gestrandete deutsche Urlauber zurück in Deutschland -->
-      <g transform="translate(-241.635938 522.199219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(304.31875 408.100969)scale(0.1 -0.1)">
        <defs>
         <path d="M 8.6875 72.90625 
 L 18.609375 72.90625 
@@ -2858,19 +2698,14 @@ z
      </g>
     </g>
     <g id="ytick_25">
-     <g id="line2d_65">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 539.52 
-L 583.2 539.52 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_66">
+     <g id="line2d_33">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="539.52"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="425.42175"/>
       </g>
      </g>
      <g id="text_33">
       <!-- Österreich stellt Exit-Strategie vor -->
-      <g transform="translate(-96.590625 544.074688)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(449.364062 429.976438)scale(0.1 -0.1)">
        <defs>
         <path d="M 39.40625 66.21875 
 Q 28.65625 66.21875 22.328125 58.203125 
@@ -2958,19 +2793,14 @@ z
      </g>
     </g>
     <g id="ytick_26">
-     <g id="line2d_67">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 560.64 
-L 583.2 560.64 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_68">
+     <g id="line2d_34">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="560.64"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="446.54175"/>
       </g>
      </g>
      <g id="text_34">
       <!-- Mehr als 100.000 bestätigte Infizierte in Deutschland - Wuhan beendet Abschottung [33.000 Genesene in DE] -->
-      <g transform="translate(-476.964063 564.439219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(68.990625 450.340969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-77"/>
        <use x="86.279297" xlink:href="#DejaVuSans-101"/>
        <use x="147.802734" xlink:href="#DejaVuSans-104"/>
@@ -3080,19 +2910,14 @@ L 583.2 560.64
      </g>
     </g>
     <g id="ytick_27">
-     <g id="line2d_69">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 602.88 
-L 583.2 602.88 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_70">
+     <g id="line2d_35">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="602.88"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="488.78175"/>
       </g>
      </g>
      <g id="text_35">
       <!-- Mehr als 20.000 Tote in den Vereinigten Staaten -->
-      <g transform="translate(-166.984375 606.679219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(378.970312 492.580969)scale(0.1 -0.1)">
        <defs>
         <path d="M 28.609375 0 
 L 0.78125 72.90625 
@@ -3155,19 +2980,14 @@ z
      </g>
     </g>
     <g id="ytick_28">
-     <g id="line2d_71">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 613.44 
-L 583.2 613.44 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_72">
+     <g id="line2d_36">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="613.44"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="499.34175"/>
       </g>
      </g>
      <g id="text_36">
       <!-- Leopldina[sic] steht[sic] Gutachten vor -->
-      <g transform="translate(-120.570312 617.239219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(425.384375 503.140969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-76"/>
        <use x="53.962891" xlink:href="#DejaVuSans-101"/>
        <use x="115.486328" xlink:href="#DejaVuSans-111"/>
@@ -3211,19 +3031,14 @@ L 583.2 613.44
      </g>
     </g>
     <g id="ytick_29">
-     <g id="line2d_73">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 634.56 
-L 583.2 634.56 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_74">
+     <g id="line2d_37">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="634.56"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="520.46175"/>
       </g>
      </g>
      <g id="text_37">
       <!-- Bund und Länder einigen sich auf wenige Lockerungen [Maskenpflicht im Handel und ÖPNV, Geschäftsöffnung bis 800qm] -->
-      <g transform="translate(-538.754688 639.114688)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(7.2 525.016438)scale(0.1 -0.1)">
        <defs>
         <path d="M 19.671875 64.796875 
 L 19.671875 37.40625 
@@ -3396,19 +3211,14 @@ z
      </g>
     </g>
     <g id="ytick_30">
-     <g id="line2d_75">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 708.48 
-L 583.2 708.48 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_76">
+     <g id="line2d_38">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="708.48"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="594.38175"/>
       </g>
      </g>
      <g id="text_38">
       <!-- Erste klinische Studie für Corona-Impfstoff genehmigt; Maskenpflicht gilt künftig bundesweit. -->
-      <g transform="translate(-391.723438 712.279219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(154.23125 598.180969)scale(0.1 -0.1)">
        <defs>
         <path d="M 64.40625 67.28125 
 L 64.40625 56.890625 
@@ -3542,19 +3352,14 @@ z
      </g>
     </g>
     <g id="ytick_31">
-     <g id="line2d_77">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 729.6 
-L 583.2 729.6 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_78">
+     <g id="line2d_39">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="729.6"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="615.50175"/>
       </g>
      </g>
      <g id="text_39">
       <!-- Corona tödlicher als Grippe -->
-      <g transform="translate(-62.753125 733.399219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(483.201562 619.300969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-67"/>
        <use x="69.824219" xlink:href="#DejaVuSans-111"/>
        <use x="131.005859" xlink:href="#DejaVuSans-114"/>
@@ -3586,19 +3391,14 @@ L 583.2 729.6
      </g>
     </g>
     <g id="ytick_32">
-     <g id="line2d_79">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 814.08 
-L 583.2 814.08 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_80">
+     <g id="line2d_40">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="814.08"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="699.98175"/>
       </g>
      </g>
      <g id="text_40">
       <!-- Sachsen-Anhalt lockert Kontaktbeschränkungen -->
-      <g transform="translate(-165.490625 817.879219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(380.464062 703.780969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-83"/>
        <use x="63.476562" xlink:href="#DejaVuSans-97"/>
        <use x="124.755859" xlink:href="#DejaVuSans-99"/>
@@ -3647,19 +3447,14 @@ L 583.2 814.08
      </g>
     </g>
     <g id="ytick_33">
-     <g id="line2d_81">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 856.32 
-L 583.2 856.32 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_82">
+     <g id="line2d_41">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="856.32"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="742.22175"/>
       </g>
      </g>
      <g id="text_41">
       <!-- Bundesländer einigen sich auf Notfallmechanismus -->
-      <g transform="translate(-182.70625 860.119219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(363.248437 746.020969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-66"/>
        <use x="68.603516" xlink:href="#DejaVuSans-117"/>
        <use x="131.982422" xlink:href="#DejaVuSans-110"/>
@@ -3712,19 +3507,14 @@ L 583.2 856.32
      </g>
     </g>
     <g id="ytick_34">
-     <g id="line2d_83">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 930.24 
-L 583.2 930.24 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_84">
+     <g id="line2d_42">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="930.24"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="816.14175"/>
       </g>
      </g>
      <g id="text_42">
       <!-- Seehofer verkündet Lockerung der Grenzkontrollen -->
-      <g transform="translate(-181.9375 934.039219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(364.017187 819.940969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-83"/>
        <use x="63.476562" xlink:href="#DejaVuSans-101"/>
        <use x="125" xlink:href="#DejaVuSans-101"/>
@@ -3777,19 +3567,14 @@ L 583.2 930.24
      </g>
     </g>
     <g id="ytick_35">
-     <g id="line2d_85">
-      <path clip-path="url(#p5b3cdef995)" d="M 81 983.04 
-L 583.2 983.04 
-" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"/>
-     </g>
-     <g id="line2d_86">
+     <g id="line2d_43">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="81" xlink:href="#m68f27816dd" y="983.04"/>
+       <use style="fill:#555555;stroke:#555555;stroke-width:0.8;" x="626.954687" xlink:href="#m7f5f2b629d" y="868.94175"/>
       </g>
      </g>
      <g id="text_43">
       <!-- Donald Trump droht WHO mit Austritt -->
-      <g transform="translate(-113.839063 986.839219)scale(0.1 -0.1)">
+      <g style="fill:#555555;" transform="translate(432.115625 872.740969)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-68"/>
        <use x="77.001953" xlink:href="#DejaVuSans-111"/>
        <use x="138.183594" xlink:href="#DejaVuSans-110"/>
@@ -3829,217 +3614,204 @@ L 583.2 983.04
      </g>
     </g>
    </g>
-   <g id="line2d_87">
-    <path clip-path="url(#p5b3cdef995)" d="M 493.908711 138.24 
-L 542.700968 148.8 
-L 426.26405 159.36 
-L 546.257086 169.92 
-L 538.061318 180.48 
-L 462.416694 191.04 
-L 389.007696 201.6 
-L 287.963414 212.16 
-L 280.921943 222.72 
-L 361.740475 233.28 
-L 369.37996 243.84 
-L 398.969046 254.4 
-L 418.602491 264.96 
-L 350.818478 275.52 
-L 326.063169 286.08 
-L 304.257808 296.64 
-L 318.228512 307.2 
-L 324.160371 317.76 
-L 325.011901 328.32 
-L 317.821226 338.88 
-L 292.078403 349.44 
-L 280.304637 360 
-L 271.43357 370.56 
-L 279.823469 381.12 
-L 267.927091 391.68 
-L 256.285999 402.24 
-L 243.289026 412.8 
-L 231.476602 423.36 
-L 218.486848 433.92 
-L 208.945317 444.48 
-L 210.49866 455.04 
-L 209.488835 465.6 
-L 208.826568 476.16 
-L 205.871688 486.72 
-L 197.986763 497.28 
-L 191.529631 507.84 
-L 186.403825 518.4 
-L 183.493861 528.96 
-L 184.77519 539.52 
-L 184.24709 550.08 
-L 181.950753 560.64 
-L 178.229498 571.2 
-L 173.920121 581.76 
-L 171.755869 592.32 
-L 171.562592 602.88 
-L 172.202256 613.44 
-L 173.532567 624 
-L 173.272106 634.56 
-L 171.981849 645.12 
-L 170.246763 655.68 
-L 168.786037 666.24 
-L 168.565954 676.8 
-L 168.968654 687.36 
-L 169.109476 697.92 
-L 168.570288 708.48 
-L 167.346507 719.04 
-L 166.277343 729.6 
-L 165.605891 740.16 
-L 165.353496 750.72 
-L 165.823481 761.28 
-L 165.635551 771.84 
-L 165.201955 782.4 
-L 163.785536 803.52 
-L 163.774567 814.08 
-L 164.943405 845.76 
-L 164.714589 856.32 
-L 164.001292 866.88 
-L 163.780537 877.44 
-L 163.432725 888 
-L 163.620031 898.56 
-L 164.021115 909.12 
-L 163.61651 930.24 
-L 163.181967 940.8 
-L 162.888558 951.36 
-L 163.284933 993.6 
-L 162.696262 1014.72 
-L 162.674129 1025.28 
-L 162.478816 1035.84 
-L 162.422848 1046.4 
-L 162.943285 1067.52 
-L 162.872318 1088.64 
-L 162.232505 1109.76 
-L 162.512231 1153 
-L 162.512231 1153 
-" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
+   <g id="line2d_44">
+    <path clip-path="url(#peb9be52081)" d="M 1039.863398 24.14175 
+L 1088.655656 34.70175 
+L 972.218737 45.26175 
+L 1092.211773 55.82175 
+L 1084.016006 66.38175 
+L 1008.371382 76.94175 
+L 934.962384 87.50175 
+L 833.918101 98.06175 
+L 826.876631 108.62175 
+L 907.695163 119.18175 
+L 915.334647 129.74175 
+L 944.923734 140.30175 
+L 964.557179 150.86175 
+L 896.773166 161.42175 
+L 872.017856 171.98175 
+L 850.212495 182.54175 
+L 864.1832 193.10175 
+L 870.115059 203.66175 
+L 870.966589 214.22175 
+L 863.775914 224.78175 
+L 838.033091 235.34175 
+L 826.259324 245.90175 
+L 817.388257 256.46175 
+L 825.778156 267.02175 
+L 813.881779 277.58175 
+L 802.240686 288.14175 
+L 789.243714 298.70175 
+L 777.431289 309.26175 
+L 764.441535 319.82175 
+L 754.900005 330.38175 
+L 756.453347 340.94175 
+L 755.443523 351.50175 
+L 754.781256 362.06175 
+L 751.826375 372.62175 
+L 743.941451 383.18175 
+L 737.484319 393.74175 
+L 732.358513 404.30175 
+L 729.448549 414.86175 
+L 730.729877 425.42175 
+L 730.201777 435.98175 
+L 727.905441 446.54175 
+L 724.184185 457.10175 
+L 719.874808 467.66175 
+L 717.710557 478.22175 
+L 717.51728 488.78175 
+L 718.156943 499.34175 
+L 719.487255 509.90175 
+L 719.226793 520.46175 
+L 717.936537 531.02175 
+L 716.201451 541.58175 
+L 714.740725 552.14175 
+L 714.520641 562.70175 
+L 714.923341 573.26175 
+L 715.064163 583.82175 
+L 714.524975 594.38175 
+L 713.301194 604.94175 
+L 712.232031 615.50175 
+L 711.560579 626.06175 
+L 711.308184 636.62175 
+L 711.778169 647.18175 
+L 711.590239 657.74175 
+L 711.156643 668.30175 
+L 709.740223 689.42175 
+L 709.729254 699.98175 
+L 710.898093 731.66175 
+L 710.669276 742.22175 
+L 709.95598 752.78175 
+L 709.735224 763.34175 
+L 709.387413 773.90175 
+L 709.574718 784.46175 
+L 709.975802 795.02175 
+L 709.571197 816.14175 
+L 709.136655 826.70175 
+L 708.843246 837.26175 
+L 709.23962 879.50175 
+L 708.65095 900.62175 
+L 708.628816 911.18175 
+L 708.433503 921.74175 
+L 708.377536 932.30175 
+L 708.488451 936.059875 
+L 708.488451 936.059875 
+" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:1.5;"/>
    </g>
-   <g id="line2d_88">
-    <path clip-path="url(#p5b3cdef995)" d="M 370.582783 138.24 
-L 419.374942 148.8 
-L 302.937819 159.36 
-L 422.9305 169.92 
-L 554.424061 180.48 
-L 436.464574 191.04 
-L 371.673783 201.6 
-L 205.243161 212.16 
-L 196.780145 222.72 
-L 320.521736 233.28 
-L 358.74992 243.84 
-L 506.924178 254.4 
-L 560.372727 264.96 
-L 344.090714 275.52 
-L 300.392237 286.08 
-L 255.12428 296.64 
-L 270.122786 307.2 
-L 306.796501 317.76 
-L 324.190309 328.32 
-L 329.470714 338.88 
-L 271.496399 349.44 
-L 247.062969 360 
-L 231.036903 370.56 
-L 249.830322 381.12 
-L 245.079951 391.68 
-L 231.310837 402.24 
-L 211.686313 412.8 
-L 181.08913 423.36 
-L 161.218473 433.92 
-L 147.386464 444.48 
-L 161.056147 455.04 
-L 170.700496 465.6 
-L 187.806511 476.16 
-L 197.69212 486.72 
-L 166.418296 497.28 
-L 145.364888 507.84 
-L 128.011504 518.4 
-L 121.350016 528.96 
-L 140.099141 539.52 
-L 154.24065 550.08 
-L 159.755483 560.64 
-L 148.640837 571.2 
-L 116.541866 581.76 
-L 104.245968 592.32 
-L 109.117913 602.88 
-L 127.862136 613.44 
-L 169.345946 624 
-L 190.819183 634.56 
-L 176.634798 645.12 
-L 147.625036 655.68 
-L 120.329822 666.24 
-L 119.455729 676.8 
-L 133.566927 687.36 
-L 152.886377 697.92 
-L 164.538218 708.48 
-L 145.997785 719.04 
-L 122.129772 729.6 
-L 109.283006 740.16 
-L 109.728948 750.72 
-L 133.863561 761.28 
-L 148.982603 771.84 
-L 152.913317 782.4 
-L 139.011169 792.96 
-L 106.579492 803.52 
-L 109.174825 814.08 
-L 129.155648 824.64 
-L 163.259885 835.2 
-L 224.335467 845.76 
-L 213.090565 856.32 
-L 157.354061 866.88 
-L 110.264761 888 
-L 122.299356 898.56 
-L 164.453877 909.12 
-L 163.314706 919.68 
-L 174.322593 930.24 
-L 138.178661 940.8 
-L 108.790729 951.36 
-L 122.282576 961.92 
-L 134.789861 972.48 
-L 164.02176 983.04 
-L 196.038236 993.6 
-L 163.313881 1004.16 
-L 131.372343 1014.72 
-L 125.610762 1025.28 
-L 108.561637 1035.84 
-L 115.714711 1046.4 
-L 165.910402 1056.96 
-L 188.996279 1067.52 
-L 210.361814 1078.08 
-L 218.015352 1088.64 
-L 140.389881 1099.2 
-L 103.827273 1109.76 
-L 112.483782 1120.32 
-L 123.423539 1130.88 
-L 167.445999 1141.44 
-L 206.857505 1152 
-L 203.869386 1153 
-L 203.869386 1153 
-" style="fill:none;stroke:#ff7f0e;stroke-linecap:square;stroke-width:1.5;"/>
+   <g id="line2d_45">
+    <path clip-path="url(#peb9be52081)" d="M 916.53747 24.14175 
+L 965.329629 34.70175 
+L 848.892506 45.26175 
+L 968.885187 55.82175 
+L 1100.378748 66.38175 
+L 982.419262 76.94175 
+L 917.62847 87.50175 
+L 751.197848 98.06175 
+L 742.734833 108.62175 
+L 866.476424 119.18175 
+L 904.704607 129.74175 
+L 1052.878865 140.30175 
+L 1106.327415 150.86175 
+L 890.045402 161.42175 
+L 846.346924 171.98175 
+L 801.078967 182.54175 
+L 816.077473 193.10175 
+L 852.751189 203.66175 
+L 870.144996 214.22175 
+L 875.425401 224.78175 
+L 817.451086 235.34175 
+L 793.017656 245.90175 
+L 776.991591 256.46175 
+L 795.78501 267.02175 
+L 791.034639 277.58175 
+L 777.265524 288.14175 
+L 757.641 298.70175 
+L 727.043817 309.26175 
+L 707.17316 319.82175 
+L 693.341151 330.38175 
+L 707.010834 340.94175 
+L 716.655183 351.50175 
+L 733.761199 362.06175 
+L 743.646807 372.62175 
+L 712.372983 383.18175 
+L 691.319575 393.74175 
+L 673.966191 404.30175 
+L 667.304703 414.86175 
+L 686.053828 425.42175 
+L 700.195337 435.98175 
+L 705.71017 446.54175 
+L 694.595525 457.10175 
+L 662.496554 467.66175 
+L 650.200655 478.22175 
+L 655.072601 488.78175 
+L 673.816824 499.34175 
+L 715.300634 509.90175 
+L 736.773871 520.46175 
+L 722.589486 531.02175 
+L 693.579724 541.58175 
+L 666.284509 552.14175 
+L 665.410417 562.70175 
+L 679.521614 573.26175 
+L 698.841064 583.82175 
+L 710.492906 594.38175 
+L 691.952473 604.94175 
+L 668.084459 615.50175 
+L 655.237693 626.06175 
+L 655.683636 636.62175 
+L 679.818248 647.18175 
+L 694.93729 657.74175 
+L 698.868005 668.30175 
+L 684.965856 678.86175 
+L 652.534179 689.42175 
+L 655.129512 699.98175 
+L 675.110336 710.54175 
+L 709.214573 721.10175 
+L 770.290155 731.66175 
+L 759.045252 742.22175 
+L 703.308748 752.78175 
+L 656.219448 773.90175 
+L 668.254044 784.46175 
+L 710.408565 795.02175 
+L 709.269394 805.58175 
+L 720.27728 816.14175 
+L 684.133349 826.70175 
+L 654.745416 837.26175 
+L 668.237263 847.82175 
+L 680.744549 858.38175 
+L 709.976448 868.94175 
+L 741.992923 879.50175 
+L 709.268568 890.06175 
+L 677.32703 900.62175 
+L 671.565449 911.18175 
+L 654.516324 921.74175 
+L 661.669399 932.30175 
+L 679.533194 936.059875 
+L 679.533194 936.059875 
+" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:1.5;"/>
    </g>
    <g id="patch_3">
-    <path d="M 81 1025.28 
-L 81 138.24 
-" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+    <path d="M 626.954687 911.18175 
+L 626.954687 24.14175 
+" style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_4">
-    <path d="M 583.2 1025.28 
-L 583.2 138.24 
-" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+    <path d="M 1129.154688 911.18175 
+L 1129.154688 24.14175 
+" style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_5">
-    <path d="M 81 1025.28 
-L 583.2 1025.28 
-" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+    <path d="M 626.954688 911.18175 
+L 1129.154688 911.18175 
+" style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;"/>
    </g>
    <g id="patch_6">
-    <path d="M 81 138.24 
-L 583.2 138.24 
-" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+    <path d="M 626.954688 24.14175 
+L 1129.154688 24.14175 
+" style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;"/>
    </g>
    <g id="text_44">
     <!-- Fall-Rate (4 Tage vorversetzt). Links: COVID-19-Chronik der FAZ -->
-    <g transform="translate(141.865313 132.24)scale(0.12 -0.12)">
+    <g transform="translate(649.773063 18.14175)scale(0.144 -0.144)">
      <defs>
       <path d="M 31 75.875 
 Q 24.46875 64.65625 21.28125 53.65625 
@@ -4164,27 +3936,27 @@ z
    </g>
    <g id="legend_1">
     <g id="patch_7">
-     <path d="M 494.604688 1020.28 
-L 576.2 1020.28 
-Q 578.2 1020.28 578.2 1018.28 
-L 578.2 989.92375 
-Q 578.2 987.92375 576.2 987.92375 
-L 494.604688 987.92375 
-Q 492.604688 987.92375 492.604688 989.92375 
-L 492.604688 1018.28 
-Q 492.604688 1020.28 494.604688 1020.28 
+     <path d="M 1040.559375 906.18175 
+L 1122.154688 906.18175 
+Q 1124.154688 906.18175 1124.154688 904.18175 
+L 1124.154688 875.8255 
+Q 1124.154688 873.8255 1122.154688 873.8255 
+L 1040.559375 873.8255 
+Q 1038.559375 873.8255 1038.559375 875.8255 
+L 1038.559375 904.18175 
+Q 1038.559375 906.18175 1040.559375 906.18175 
 z
-" style="fill:#ffffff;opacity:0.8;stroke:#cccccc;stroke-linejoin:miter;"/>
+" style="fill:#e5e5e5;opacity:0.8;stroke:#cccccc;stroke-linejoin:miter;stroke-width:0.5;"/>
     </g>
-    <g id="line2d_89">
-     <path d="M 496.604688 996.022187 
-L 516.604688 996.022187 
-" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
+    <g id="line2d_46">
+     <path d="M 1042.559375 881.923937 
+L 1062.559375 881.923937 
+" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:1.5;"/>
     </g>
-    <g id="line2d_90"/>
+    <g id="line2d_47"/>
     <g id="text_45">
      <!-- Logistisch -->
-     <g transform="translate(524.604688 999.522187)scale(0.1 -0.1)">
+     <g transform="translate(1070.559375 885.423937)scale(0.1 -0.1)">
       <use xlink:href="#DejaVuSans-76"/>
       <use x="53.962891" xlink:href="#DejaVuSans-111"/>
       <use x="115.144531" xlink:href="#DejaVuSans-103"/>
@@ -4197,15 +3969,15 @@ L 516.604688 996.022187
       <use x="432.576172" xlink:href="#DejaVuSans-104"/>
      </g>
     </g>
-    <g id="line2d_91">
-     <path d="M 496.604688 1010.700312 
-L 516.604688 1010.700312 
-" style="fill:none;stroke:#ff7f0e;stroke-linecap:square;stroke-width:1.5;"/>
+    <g id="line2d_48">
+     <path d="M 1042.559375 896.602062 
+L 1062.559375 896.602062 
+" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:1.5;"/>
     </g>
-    <g id="line2d_92"/>
+    <g id="line2d_49"/>
     <g id="text_46">
      <!-- RKI -->
-     <g transform="translate(524.604688 1014.200312)scale(0.1 -0.1)">
+     <g transform="translate(1070.559375 900.102062)scale(0.1 -0.1)">
       <use xlink:href="#DejaVuSans-82"/>
       <use x="69.482422" xlink:href="#DejaVuSans-75"/>
       <use x="135.058594" xlink:href="#DejaVuSans-73"/>
@@ -4215,8 +3987,8 @@ L 516.604688 1010.700312
   </g>
  </g>
  <defs>
-  <clipPath id="p5b3cdef995">
-   <rect height="887.04" width="502.2" x="81" y="138.24"/>
+  <clipPath id="peb9be52081">
+   <rect height="887.04" width="502.2" x="626.954687" y="24.14175"/>
   </clipPath>
  </defs>
 </svg>
