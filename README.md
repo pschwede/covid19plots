@@ -6,9 +6,9 @@
 
 #### Trends
 
-[**Reproduction:**](https://github.com/pschwede/covid19plots/blob/master/repro.md) How fast is the virus spreading?
+[**Reproduction:**](https://github.com/pschwede/covid19plots/blob/master/doc/repro.md) How fast is the virus spreading?
 
-[**Letality:**](https://github.com/pschwede/covid19plots/blob/master/letality.md) How likely does one die after a positive COVID-19 diagnosis?
+[**Letality:**](https://github.com/pschwede/covid19plots/blob/master/doc/letality.md) How likely does one die after a positive COVID-19 diagnosis?
 
 [**Countries in Comparison:**](https://github.com/pschwede/covid19plots/blob/master/countries_in_comparison.ipynb) Did you know that apparently ~3x~ 5x more people per million died due to COVID-19 in Sweden than in Germany?
 
@@ -20,4 +20,4 @@
 
 #### Speculation
 
-[**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/projection.md) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
+[**Future Projection:**](https://github.com/pschwede/covid19plots/blob/master/doc/projection.md) What will the COVID-19 future look like? The same *non-exponential* model is used in [[1]](https://www.sciencedirect.com/science/article/pii/S1201971220303039) and [[2]](https://medium.com/analytics-vidhya/predicting-the-spread-of-covid-19-coronavirus-in-us-daily-updates-4de238ad8c26)
