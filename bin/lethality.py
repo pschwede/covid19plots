@@ -41,7 +41,7 @@ def lethality_plot():
 
 def main():
     import sys
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 2:
         print("USAGE: %s OUTFILE" % sys.argv[0])
         sys.exit(2)
     outfile = sys.argv[1]
