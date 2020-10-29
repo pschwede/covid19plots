@@ -47,3 +47,6 @@ def main():
     outfile = sys.argv[1]
     with plt.style.context('ggplot'):
         lethality_plot().savefig(outfile, bbox_inches='tight')
+
+if __name__ == "__main__":
+    main()
