@@ -205,6 +205,7 @@ def logistic_bars(lasts, title='Infektionen'):
             xlim=(min(1.0, min(lasts)), max(lasts)),
             legend=False, grid=False,
             title="Die Bundesländer im Rennen auf R=1.0\nLogistisch, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+    fig.set_size_inches(9,9)
     fig = ax.get_figure()
     return fig
 
@@ -215,6 +216,7 @@ def rki_bars(lasts_rki, title='Infektionen'):
             legend=False, grid=False,
             style='dark_background',
             title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+    fig.set_size_inches(9,9)
     fig = ax.get_figure()
     return fig
 

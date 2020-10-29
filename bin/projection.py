@@ -63,6 +63,7 @@ def plot_projection(col='Cases', future_range=FUTURE_RANGE, LOG=False):
                 % (DE_POPULATION/1e6, DAYS_INFECTION_TILL_SYMPTOM, now.year, now.month, now.day))
 
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
+    fig.autofmt_xdate()
     return fig
 
 
