@@ -21,7 +21,7 @@ ENVACT="env/bin/activate"
 		logistic_bars img/logistic_bars.svg \
 		rki_bars img/rki_bars.svg \
 		plot_press_chronic img/plot_press_chronic.svg
-        time bin/letality.py img/letality.svg
+        time bin/lethality.py img/lethality.svg
         time bin/projection.py img/projection.svg
 
 	git add img/*.*
