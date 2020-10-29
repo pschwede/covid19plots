@@ -9,10 +9,10 @@ def lethality_plot():
 
     for num, (ax, area) in enumerate(zip(axes.flat, DE_STATE_NAMES)):
         df = entorb.to_dataframe(area)
-        df['Lethality_Weekly'] = df['Deaths_New'].rolling('7D').mean() / df['Cases_New'].rolling('7D').mean().shift(14) * 100
+        df['Lethality'] = df['Deaths_New'] / df['Cases_New'].shift(14) * 100
         df['Lethality_Monthly'] = df['Deaths_New'].rolling('30D').mean() / df['Cases_New'].rolling('30D').mean().shift(14) * 100
         p = ax.plot('Date',
-                    'Lethality_Weekly',
+                    'Lethality',
                     data=df.reset_index(),
                     marker='',
                     linestyle=':',
