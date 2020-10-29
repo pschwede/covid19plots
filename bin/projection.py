@@ -61,7 +61,7 @@ def plot_projection(col='Cases', future_range=FUTURE_RANGE, LOG=False):
         "author: @pschwede, "
         "source: JHU CSSE via @entorb & @pomber.") \
                 % (DE_POPULATION/1e6, DAYS_INFECTION_TILL_SYMPTOM, now.year, now.month, now.day))
-    fig.set_facecolor('w')
+
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
     return fig
 
@@ -70,7 +70,9 @@ def main():
     import sys
     if len(sys.argv) < 2:
         print("USAGE: %s OUTFILE" % sys.argv[0])
-    plot_projection().savefig(sys.argv[1])
+        sys.exit(2)
+    with plt.style.context('ggplot'):
+        plot_projection().savefig(sys.argv[1], bbox_inches='tight')
 
 
 if __name__ == "__main__":
