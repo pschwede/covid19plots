@@ -15,7 +15,7 @@ def plot_projection(col='Cases', future_range=FUTURE_RANGE, LOG=False):
     Plot graphs of four rates.
     """
     de = entorb.to_dataframe('DE-total')
-    de = de.drop(columns=[c for c in de.columns if c != col])
+    de = de.drop(columns=[c for c in de.columns if c != col]).rolling('7D').mean()
 
     now = de[col].index[-1]
 
