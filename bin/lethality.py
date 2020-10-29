@@ -9,33 +9,15 @@ def lethality_plot():
 
     for num, (ax, area) in enumerate(zip(axes.flat, DE_STATE_NAMES)):
         df = entorb.to_dataframe(area)
-        df['Lethality'] = df['Deaths_New'] / df['Cases_New'].shift(14) * 100
-        df['Lethality_Monthly'] = df['Deaths_New'].rolling('30D').mean() / df['Cases_New'].rolling('30D').mean().shift(14) * 100
-        p = ax.plot('Date',
-                    'Lethality',
-                    data=df.reset_index(),
-                    marker='',
-                    linestyle=':',
-                    label=DE_STATE_NAMES[area])
-        ax.plot('Date',
-                'Lethality_Monthly',
-                data=df.reset_index(),
-                marker='',
-                linestyle='-',
-                color=p[0].get_color(),
-                label=DE_STATE_NAMES[area])
-        ax.set_xlabel('Date')
-        #ax.set_xscale('symlog')
+        df['Lethality Weekly'] = df['Deaths_New'].resample('1W').sum() / df['Cases_New'].shift(14).resample('1W').sum() * 100
+        df['Lethality Monthly'] = df['Deaths_New'].resample('1M').sum() / df['Cases_New'].shift(14).resample('1M').sum() * 100
+        df['Lethality Weekly'].plot(ax=ax)
+        df['Lethality Monthly'].plot(ax=ax)
         ax.set_title(DE_STATE_NAMES[area])
-        ax.set_ylim(min(0,max(df['Lethality_Monthly'])))
-        #ax.set_yscale('symlog')
-        #ax.legend()
-        #ax.grid()
     fig.suptitle("Lethality (%)\n(statistical likelihood of death after 14 days after COVID-19 diagnosis)\n", fontsize=16)
     fig.set_size_inches(16,16)
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.set_facecolor('w')
     return fig
 
 def main():
