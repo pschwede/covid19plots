@@ -3,28 +3,9 @@
 Scrape RKI Dashboard
 """
 
-from datetime import datetime
 import requests
+from datetime import datetime
 import pandas as pd
-
-CASES_URL = ("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/"
-             "RKI_COVID19/FeatureServer/0/query?f=json"
-             "&where=(Meldedatum%3Etimestamp%20%272020-03-01%2022%3A59%3A59%27%20"
-             "AND%20NeuerFall%20IN(0%2C%201))%20"
-             "AND%20(Bundesland%3D%27BUNDESLAND%27)"
-             "&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
-             "&outFields=ObjectId%2CAnzahlFall%2CMeldedatum%2CNeuerFall"
-             "&orderByFields=Meldedatum%20asc&resultOffset=0&resultRecordCount=2000"
-             "&cacheHint=true")
-
-CUMSUM_CASES_URL = ("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/"
-                    "services/Covid19_RKI_Sums/FeatureServer/0/query?f=json"
-                    "&where=(Meldedatum%3Etimestamp%20%272020-03-01%2022%3A59%3A59%27%20)%20"
-                    "AND%20(Bundesland%3D%27BUNDESLAND%27)"
-                    "&returnGeometry=false&spatialRel=esriSpatialRelIntersects"
-                    "&outFields=ObjectId%2CSummeFall%2CMeldedatum"
-                    "&orderByFields=Meldedatum%20asc&resultOffset=0"
-                    "&resultRecordCount=2000&cacheHint=true")
 
 FULL_FEDERAL_STATE_NAME = {
     "BB": "Brandenburg",
@@ -44,35 +25,82 @@ FULL_FEDERAL_STATE_NAME = {
     "ST": "Sachsen-Anhalt",
     "TH": "Thüringen",
 }
+REV_FULL_FEDERAL_STATE_NAME = {v: k for k,v in FULL_FEDERAL_STATE_NAME.items()}
 
-def to_dataframe(federal_state: str, cumulated: bool = False) -> pd.DataFrame:
-    """
-    Load German data from RKI dashboard
+ISO_TO_BUNDESLANDID = {
+        v: i+1 for i,v in enumerate("SH,HH,NS,HB,NW,HE,RP,BW,BY,SL,BE,BB,MV,SN,SA,TH".split(","))
+        }
 
-    Args:
-        federal_state: state name or one of DE, BW, BY, BE, BB, HB, HH, HE, MV,
-                       NI, NW, RP, SL, SN, ST, SH, TH
+def __fetch() -> pd.DataFrame:
+    now = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    fname = "%s.csv" % now
+    try:
+        print("trying local file", fname)
+        df = pd.read_csv(fname)
+        print("source: local file", fname)
+        return df
+    except:
+        pass
+    try:
+        url = "https://github.com/ihucos/rki-covid19-data/releases/download/%s/data.csv" % now
+        print("trying", url)
+        df = pd.read_csv(requests.get(url, timeout=(5, 300)))
+        df.to_csv(fname)
+        print("source:", url)
+        return df
+    except:
+        pass
+    try:
+        url = 'https://opendata.arcgis.com/datasets/dd4580c810204019a7b8eb3e0b329dd6_0.csv'
+        print("trying", url)
+        df = pd.read_csv(requests.get(url, timeout=(10, 300)))
+        df.to_csv(fname)
+        print("source:", url)
+        return df
+    except:
+        pass
+    from arcgis.gis import GIS
+    key = 'dd4580c810204019a7b8eb3e0b329dd6'
+    df = GIS().content \
+            .get(key) \
+            .tables[0] \
+            .query() \
+            .sdf \
+            .drop(columns=['Altersgruppe2', 'Bundesland', 'ObjectId'])
+    df.to_csv(fname)
+    print("source: arcgis api, key=%s" % key)
+    return df
 
-    Returns:
-        A fully functional pandas.DataFrame
-    """
-    if len(federal_state) == 2:
-        federal_state = FULL_FEDERAL_STATE_NAME[federal_state]
+def to_dataframe(federal_state: str = None, nation: str = None, landkreis: str = None, when_sick: bool = False) -> pd.DataFrame:
+    df = __fetch()
+    df = df[df['IstErkrankungsbeginn'] == (1 if when_sick else 0)]
 
-    url = CASES_URL
-    if cumulated:
-        url = CUMSUM_CASES_URL
+    if landkreis and not federal_state and not nation:
+        return df[df['Landkreis'] == landkreis]
+    if nation and not landkreis and not federal_state:
+        df = df.groupby('Refdatum').sum() \
+                .reset_index()
+    if federal_state and not landkreis and not nation:
+        bid = ISO_TO_BUNDESLANDID[federal_state]
+        df = df[df['IdBundesland'] == bid] \
+            .groupby(['IdBundesland', 'Refdatum']).sum() \
+            .reset_index() \
+            .drop(columns='IdBundesland')
 
-    response_json = requests.get(url.replace("BUNDESLAND", federal_state)).json()
-
-    return pd.DataFrame(
-        [([int(feature['attributes']['SummeFall'])] if cumulated else \
-                [int(feature['attributes']['AnzahlFall']),
-                 int(feature['attributes']['NeuerFall'])]) \
-                for feature in response_json['features']],
-        index=[datetime.utcfromtimestamp(int(feature['attributes']['Meldedatum'])/1000) \
-                for feature in response_json['features']],
-        columns=['SummeFall'] if cumulated else ['AnzahlFall', 'NeuerFall'])
+    df = pd.DataFrame({
+        'Date': pd.to_datetime(df['Refdatum']),
+        'Cases_New': df['AnzahlFall'] - df['NeuerFall'],
+        'Deaths_New':df['AnzahlTodesfall'] - df['NeuerTodesfall'],
+        'Cured_New': df['AnzahlGenesen'] - df['NeuGenesen'],
+        }).set_index('Date')
+    df['Cured'] = df['Cured_New'].cumsum()
+    df['Deaths'] = df['Deaths_New'].cumsum()
+    df['Cases'] = df['Cases_New'].cumsum() + df['Cured']
+    df['Cases_New'] = df['Cases'].diff()
+    return df
+    
 
 if __name__ == "__main__":
-    print(to_dataframe("SN"))
+    #print(to_dataframe())
+    print(to_dataframe(nation='DE'))
+    print(to_dataframe(federal_state="SN"))
