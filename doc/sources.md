@@ -8,4 +8,4 @@
 
 #### Comparison
 
-![Charts showing differences between the three sources above.](../img/sources_deltas.png)
+![Charts showing differences between the three sources above.](../img/source_deltas.png)
