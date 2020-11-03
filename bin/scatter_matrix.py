@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scrape import entorb
+
 
 def scatter_matrix(de):
     """
@@ -11,12 +14,14 @@ def scatter_matrix(de):
     ax = pd.plotting.scatter_matrix(de, figsize=(20,20))
     return ax.get_figure()
 
+
 def correlation_table(de):
     """
     Render a table of correlation coefficents.
     """
     corr = de.corr()
     return corr.style.background_gradient(cmap='Blues')
+
 
 def fit_deaths_to_cases(de):
     """
@@ -27,6 +32,7 @@ def fit_deaths_to_cases(de):
     poly = np.poly1d(coefs, variable='Cases')
     ax = plt.plot(de['Cases'], poly(de['Cases']))
     return poly, ax.get_figure()
+
 
 def lagged_correlation(de):
     """
@@ -42,6 +48,7 @@ def lagged_correlation(de):
     lag = [x.real for x in poly.deriv().r if x.imag==0 and x.real<0][-1]
     return lag, lcor
 
+
 def plot_lagged_correlation(de):
     """
     Plot a lag.
@@ -55,10 +62,12 @@ def plot_lagged_correlation(de):
     de['Deaths_New'].rolling('7D').mean().shift(int(lag)).plot(ax=axes[1], secondary_y=True)
     return fig
 
+
 def main():
     import sys
     area = 'DE-total'
     de = entorb.to_dataframe(area)
 
-if __name__ = "__main__":
+
+if __name__ == "__main__":
     main()

@@ -32,7 +32,7 @@ def plot_source_deltas():
     return fig
 
 
-if __name__ == "__main__":
+def main():
     import sys
     if len(sys.argv) < 2:
         print("USAGE: %s OUTFILE" % sys.argv[0])
@@ -41,3 +41,7 @@ if __name__ == "__main__":
     with plt.style.context('ggplot'):
         fig = plot_source_deltas()
         fig.savefig(fname, bbox_inches='tight')
+
+
+if __name__ == "__main__":
+    main()
