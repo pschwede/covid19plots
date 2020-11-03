@@ -1,3 +1,7 @@
+#### Sources
+
+[**Sources:**](https://github.com/pschwede/covid19plots/blob/master/doc/sources.md) An overview of data sources that are supported by [scrape](https://github.com/pschwede/covid19plots/blob/master/bin/scrape/).
+
 #### Correlations
 
 [**Scatter-Matrix:**](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) Does the number of cases in intensive care correlate well with the number positive diagnoses? Also, how many days remain until death?

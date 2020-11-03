@@ -23,6 +23,7 @@ ENVACT="env/bin/activate"
 		plot_press_chronic img/plot_press_chronic.svg
         time bin/lethality.py lethality_mass_plot img/lethality.svg
         time bin/projection.py img/projection.svg
+	time bin/source_comparison.py img/source_deltas.png
 
 	git add img/*.*
 
