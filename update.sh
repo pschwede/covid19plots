@@ -24,6 +24,7 @@ ENVACT="env/bin/activate"
         time bin/lethality.py lethality_mass_plot img/lethality.svg
         time bin/projection.py img/projection.svg
 	time bin/source_comparison.py img/source_deltas.png
+	time bin/correlate.py img/correlate.png
 
 	git add img/*.*
 

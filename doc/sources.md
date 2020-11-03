@@ -4,7 +4,7 @@
 
 [**risklayer:**](../bin/scrape/risklayer.py) Loads the CSV from [Risklayer](https://risklayer-explorer.com) in Karlsruhe, Germany. With the help of volunteers, they gather data directly from German health offices.
 
-[**rki:**](../bin/scrape/rki.py) Uses ArcGIS [(PYPI)](https://pypi.org/project/arcgis/) to load the data from [corona.rki.de](https://corona.rki.de) or loads a copy of it. Sadly, I couldn't figure out yet how to use the data as it has very different columns than the other two. Also, it takes way too much time to load.
+[**rki:**](../bin/scrape/rki.py) Uses ArcGIS [(PYPI)](https://pypi.org/project/arcgis/) to load the data from [corona.rki.de](https://corona.rki.de) or loads a copy of it. Sadly, I couldn't figure out yet how to use the data as it has very different columns than the other two. Also, it takes way too much time to load. If you think you can help, please contact me on Twitter!
 
 #### Comparison
 
