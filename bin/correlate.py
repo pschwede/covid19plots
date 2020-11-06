@@ -10,7 +10,7 @@ from scrape import entorb
 def plot_correlation():
     # https://query.wikidata.org/
     dictlist = return_sparql_query_results("""
-    SELECT DISTINCT ?code ?population ?area ?ppp ?life_expectancy ?fertility_rate
+    SELECT DISTINCT ?code ?population ?area ?ppp ?ngdp ?growth ?totrsv ?hdi ?medinc ?literacy ?life_expectancy ?fertility_rate
     {
       ?country wdt:P31 wd:Q3624078 ;
                wdt:P297 ?code ;
@@ -18,6 +18,12 @@ def plot_correlation():
                wdt:P1082 ?population .
         OPTIONAL {
                ?country wdt:P4010 ?ppp .
+               ?country wdt:P2131 ?ngdp .
+               ?country wdt:P2219 ?growth .
+               ?country wdt:P2134 ?totrsv .
+               ?country wdt:P1081 ?hdi .
+               ?country wdt:P3529 ?medinc .
+               ?country wdt:P6897 ?literacy .
                ?country wdt:P2250 ?life_expectancy .
                ?country wdt:P4841 ?fertility_rate .
         }
@@ -25,9 +31,14 @@ def plot_correlation():
     """)['results']['bindings']
     df = pd.DataFrame({
         k: [x[k]['value'] if k is 'code' else float(x[k]['value']) if k in x else None for x in dictlist] \
-                for k in ['code', 'population', 'area', 'ppp', 'life_expectancy', 'fertility_rate']}) \
+                for k in ['code', 'population', 'area', 'ppp', 'ngdp', 'growth', 'totrsv', 'hdi', 'medinc', 'literacy', 'life_expectancy', 'fertility_rate']}) \
                             .set_index('code')
     df['density'] = df['population']/df['area']
+    df['ngdp/p'] = df['ngdp'] / df['population']
+    df['ppp/p'] = df['ppp'] / df['population']
+    df['growth/p'] = df['growth'] / df['population']
+    df['totrsv/p'] = df['totrsv'] / df['population']
+    df['hdi/p'] = df['hdi'] / df['population']
 
     cols = ['Deaths_Per_Million']
     dict_entorb = {c: [] for c in cols}
@@ -41,10 +52,11 @@ def plot_correlation():
     for col in dict_entorb:
         df[col] = dict_entorb[col]
 
-    fig, axes = plt.subplots(ncols=2, nrows=int((len(df.columns) - 1)/2))
+    ncols=int((len(df.columns)-1)/4+1)
+    fig, axes = plt.subplots(ncols=ncols, nrows=4)
     for ax,col in zip(axes.flat, [c for c in df.columns if c not in cols]):
-        df.plot(kind='scatter', x='Deaths_Per_Million', y=col, sharex=True, ax=ax)
-    fig.set_size_inches(9, 9*(len(df.columns)-1)/4)
+        df.plot(kind='scatter', y='Deaths_Per_Million', logy="symlog", x=col, sharey=True, ax=ax)
+    fig.set_size_inches(16, 4*ncols)
     return fig
 
 

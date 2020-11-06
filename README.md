@@ -6,7 +6,7 @@
 
 [**Scatter-Matrix:**](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) Does the number of cases in intensive care correlate well with the number positive diagnoses? Also, how many days remain until death?
 
-[**Correlate World Data:**](https://github.com/pschwede/covid19plots/blob/master/correlate.ipynb) Where in the world hits COVID-19 the hardest and why?
+[**Correlate World Data:**](https://github.com/pschwede/covid19plots/blob/master/doc/correlate.md) Where in the world hits COVID-19 the hardest and why?
 
 #### Trends
 
