@@ -55,7 +55,7 @@ def plot_correlation():
     ncols=int((len(df.columns)-1)/4+1)
     fig, axes = plt.subplots(ncols=ncols, nrows=4)
     for ax,col in zip(axes.flat, [c for c in df.columns if c not in cols]):
-        df.plot(kind='scatter', y='Deaths_Per_Million', logy="symlog", x=col, sharey=True, ax=ax)
+        df.plot(kind='scatter', y='Deaths_Per_Million', logy=True, x=col, sharey=True, ax=ax)
     fig.set_size_inches(16, 4*ncols)
     return fig
 
