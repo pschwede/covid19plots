@@ -59,7 +59,7 @@ def rki_r(df, generation_time=DAYS_INFECTION_TILL_SYMPTOM):
     return rs
 
 
-def weekly_r(df, generation_time=7):
+def weekly_r(df):
     """
     Number of infections per 100k people in a week. Resamples to 7 days.
 
@@ -72,7 +72,7 @@ def weekly_r(df, generation_time=7):
     """
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
-        rs[col] = df[col+'_New_Per_Million'].resample("%dD" % generation_time).sum() * 10.
+        rs[col] = df[col+'_New_Per_Million'].rolling("7D").sum() * 10.
     return rs
 
 
@@ -168,47 +168,60 @@ def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
     Return:
         Tuple of a Figure, a list of last logistical rates and a list of last rki values
     """
-    lasts = []
-    lasts_rki = []
     areas = sorted([x for x in DE_STATE_NAMES])
+    lasts = {'area': areas, 'logistic': [], 'rki': [], 'weekly': []}
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area).rolling('7D').mean()
 
         rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
-        lasts.append(rs[col].tail(1).values[0])
+        lasts['logistic'].append(rs[col].values[-1])
 
-        ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s (%d Ew.)" % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
-        ax.set_xlabel('')
-        ax.set_xlim(-len(rs.index), 0)
-        ax.set_ylim(0, 3)
+        rs[col].plot(ax=ax, ylim=(0,5), label="logistic", title="%s (%d Ew." % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
 
         rs = rki_r(de)
-        lasts_rki.append(rs[col].tail(1).values[0])
+        lasts['rki'].append(rs[col].values[-1])
+        rs[col].plot(ax=ax, ylim=(0,5), label="rki", sharex=True, sharey=True)
 
-        ax.plot(range(-len(rs.index), 0), rs[col])
+        rs = weekly_r(de)
+        lasts['weekly'].append(rs[col].values[-1])
+        ax2 = rs[col].plot(ax=ax, label="weekly", sharex=True, sharey=True, secondary_y=True)
 
+    fig.legend()
     fig.set_size_inches(16,16)
-    return fig, lasts, lasts_rki
+    return fig, pd.DataFrame(lasts).set_index('area')
 
 def logistic_bars(lasts, title='Infektionen'):
-    current_r = pd.DataFrame({'Logistic': lasts}, index=[DE_STATE_NAMES[x] for x in sorted([y for y in DE_STATE_NAMES])]).sort_values('Logistic')
-    ax = current_r.plot(kind='barh',
-            xlim=(min(1.0, min(lasts)), max(lasts)),
-            legend=False, grid=False,
-            title="Die Bundesländer im Rennen auf R=1.0\nLogistisch, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+    ax = lasts \
+            .drop(columns=[x for x in lasts.columns if x != 'logistic']) \
+            .sort_values('logistic') \
+            .plot(kind='barh', xlim=(min(1.0, lasts['logistic'].min()),
+                    lasts['logistic'].max()), legend=False, grid=False, ylabel="",
+                    title="Die Bundesländer im Rennen auf R=1.0\nLogistisch, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
 
-def rki_bars(lasts_rki, title='Infektionen'):
-    current_r = pd.DataFrame({'RKI': lasts_rki}, index=[DE_STATE_NAMES[x] for x in sorted([y for y in DE_STATE_NAMES])]).sort_values('RKI')
-    ax = current_r.plot(kind='barh',
-            xlim=(min(0.0, min(lasts_rki)), max(lasts_rki)),
-            legend=False, grid=False,
-            style='dark_background',
-            title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+def rki_bars(lasts, title='Infektionen'):
+    ax = lasts \
+            .drop(columns=[x for x in lasts.columns if x != 'rki']) \
+            .sort_values('rki') \
+            .plot(kind='barh', xlim=(min(1.0, lasts['rki'].min()), 
+                    lasts['rki'].max()), legend=False, grid=False, ylabel="",
+                    style='dark_background',
+                    title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+    fig = ax.get_figure()
+    fig.set_size_inches(9,9)
+    return fig
+
+def weekly_bars(lasts, title="Infektionen"):
+    ax = lasts \
+            .drop(columns=[x for x in lasts.columns if x != 'weekly']) \
+            .sort_values('weekly') \
+            .plot(kind='barh', xlim=(min(1.0, lasts['weekly'].min()),
+                lasts['weekly'].max()), ylabel="", legend=False, grid=False,
+                style='dark_background',
+                title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
@@ -263,15 +276,15 @@ def main():
             elif sys.argv[i] in ["5", plot_weekly_r.__name__]:
                 fig = plot_weekly_r()
             else:
-                fig, lasts, lasts_rki = plot_rki_and_logistic()
+                fig, lasts = plot_rki_and_logistic()
                 if sys.argv[i] in ["1", plot_rki_and_logistic.__name__]:
                     """pass"""
                 elif sys.argv[i] in ["2", logistic_bars.__name__]:
                     fig = logistic_bars(lasts)
                 elif sys.argv[i] in ["3", rki_bars.__name__]:
-                    fig = rki_bars(lasts_rki)
+                    fig = rki_bars(lasts)
                 elif sys.argv[i] in ["4", weekly_bars.__name__]:
-                    fig = weekly_bars(lasts_rki)
+                    fig = weekly_bars(lasts)
             print("saving", sys.argv[i+1])
             fig.savefig(sys.argv[i+1], bbox_inches='tight')
     sys.exit(0)
