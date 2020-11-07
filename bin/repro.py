@@ -187,7 +187,6 @@ def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
         lasts['weekly'].append(rs[col].values[-1])
         ax2 = rs[col].plot(ax=ax, label="weekly", sharex=True, sharey=True, secondary_y=True)
 
-    fig.legend()
     fig.set_size_inches(16,16)
     return fig, pd.DataFrame(lasts).set_index('area')
 
@@ -208,7 +207,6 @@ def rki_bars(lasts, title='Infektionen'):
             .sort_values('rki') \
             .plot(kind='barh', xlim=(min(1.0, lasts['rki'].min()), 
                     lasts['rki'].max()), legend=False, grid=False, ylabel="",
-                    style='dark_background',
                     title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
@@ -220,8 +218,7 @@ def weekly_bars(lasts, title="Infektionen"):
             .sort_values('weekly') \
             .plot(kind='barh', xlim=(min(1.0, lasts['weekly'].min()),
                 lasts['weekly'].max()), ylabel="", legend=False, grid=False,
-                style='dark_background',
-                title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+                title="Die Bundesländer im Rennen auf R=0.0\nFälle pro Woche und 100 000 Ew., %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
