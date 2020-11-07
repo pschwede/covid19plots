@@ -72,7 +72,7 @@ def weekly_r(df, generation_time=7):
     """
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
-        rs[col] = df[col+'_New_Per_100000'].resample("%dD" % generation_time).sum()
+        rs[col] = df[col+'_New_Per_Million'].resample("%dD" % generation_time).sum() * 10.
     return rs
 
 
@@ -91,20 +91,21 @@ def plot_rki_and_logistic_total(state='DE-total'):
     fig, ax = plt.subplots()
     ax2 = ax.twinx()
 
-    l = ax2.plot(de.index, de['Cases_New'].rolling('7D').mean().shift(-3), color='k', label='New Cases rolling week')
+    l = ax2.plot(de.index, de['Cases_New'].rolling('7D').mean(), color='k', label='New Cases rolling week')
     ax2.plot(de.index, de['Cases_New'], linestyle=':', color=l[0].get_color(), label='New Cases')
 
     poly = polynomial_r(de)['Cases']
-    l = ax.plot(de.index, poly.rolling('7D').mean().shift(-3), label='Logistic rate rolling week')
+    l = ax.plot(de.index, poly.rolling('7D').mean(), label='Logistic rate rolling week')
     ax.plot(de.index, poly, linestyle=':', color=l[0].get_color(), label='Logistic rate')
 
     rki = rki_r(de)['Cases']
-    l = ax.plot(de.index, rki.rolling('7D').mean().shift(-3), label='RKI rate rolling week')
+    l = ax.plot(de.index, rki.rolling('7D').mean(), label='RKI rate rolling week')
     ax.plot(de.index, rki, linestyle=':', color=l[0].get_color(), label='RKI rate')
 
     plt.legend(handles=ax.lines+ax2.lines)
     ax.axhline(1.0, color='g', alpha=0.5)
     fig.set_size_inches(16,9)
+    fig.tight_layout()
     return fig
 
 def plot_r(population=DE_POPULATION):
@@ -117,19 +118,15 @@ def plot_r(population=DE_POPULATION):
         
         rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
         lasts.append(rs[col].tail(1).values[0])
-        
-        ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s (%d Ew.)" % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
-        ax.set_xlabel('')
-        ax.set_xlim(-len(rs.index), 0)
-        ax.set_ylim(0, 3)
+
+        ax = rs[col].plot(ax=ax, title="%s (%d Ew.)" % (DE_STATE_NAMES[area], population[DE_STATE_NAMES[area]]))
         
         rs = rki_r(de)
         lasts_rki.append(rs[col].tail(1).values[0])
-        
-        ax.plot(range(-len(rs.index), 0), rs[col])
+        rs[col].plot(ax=ax)
         
     fig.set_size_inches(16,16)
+    fig.tight_layout()
     return fig, lasts, lasts_rki
 
 def plot_weekly_r(col='Cases', ncols=4):
@@ -152,11 +149,7 @@ def plot_weekly_r(col='Cases', ncols=4):
 
         rs = weekly_r(de)
         lasts.append(rs[col].tail(1).values[0])
-
-        ax.plot(range(-len(rs.index), 0), rs[col])
-        ax.set_title("%s" % DE_STATE_NAMES[area])
-
-        rs[col].plot(ax=ax, kind='bar')
+        rs[col].plot(ax=ax, title="%s" % DE_STATE_NAMES[area])
 
     fig.suptitle("Weekly new cases")
     fig.set_size_inches(16,16)
@@ -265,9 +258,9 @@ def main():
         for i in range(1, len(sys.argv), 2):
             if sys.argv[i] in ["0", plot_rki_and_logistic_total.__name__]:
                 fig = plot_rki_and_logistic_total()
-            elif sys.argv[i] in ["4", plot_press_chronic.__name__]:
+            elif sys.argv[i] in ["6", plot_press_chronic.__name__]:
                 fig = plot_press_chronic()
-            elif sys.argv[i] in ["4", plot_weekly_r.__name__]:
+            elif sys.argv[i] in ["5", plot_weekly_r.__name__]:
                 fig = plot_weekly_r()
             else:
                 fig, lasts, lasts_rki = plot_rki_and_logistic()
@@ -277,6 +270,8 @@ def main():
                     fig = logistic_bars(lasts)
                 elif sys.argv[i] in ["3", rki_bars.__name__]:
                     fig = rki_bars(lasts_rki)
+                elif sys.argv[i] in ["4", weekly_bars.__name__]:
+                    fig = weekly_bars(lasts_rki)
             print("saving", sys.argv[i+1])
             fig.savefig(sys.argv[i+1], bbox_inches='tight')
     sys.exit(0)
