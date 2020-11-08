@@ -17,7 +17,3 @@ This r-value has a way smoother curve (red) than the 4-days incidence (blue), th
 ![German districts in the race to 0.0](../img/rki_bars.svg)
 ![German districts in the race to 1.0](../img/logistic_bars.svg)
 ![German districts in the race to 0.0](../img/weekly_bars.svg)
-
-#### Which messages of the press caused a reduction of `r`?
-
-![Chronology of the first wave next to the rates](../img/plot_press_chronic.svg)

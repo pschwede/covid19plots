@@ -72,7 +72,7 @@ def weekly_r(df):
     """
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
-        rs[col] = df[col+'_New_Per_Million'].rolling("7D").sum() * 10.
+        rs[col] = df[col+'_New_Per_Million'].rolling("7D").sum() / 10.
     return rs
 
 
@@ -146,11 +146,9 @@ def plot_weekly_r(col='Cases', ncols=4):
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area)
-
         rs = weekly_r(de)
         lasts.append(rs[col].tail(1).values[0])
         rs[col].plot(ax=ax, title="%s" % DE_STATE_NAMES[area])
-
     fig.suptitle("Weekly new cases")
     fig.set_size_inches(16,16)
     fig.tight_layout()
@@ -207,7 +205,7 @@ def rki_bars(lasts, title='Infektionen'):
             .sort_values('rki') \
             .plot(kind='barh', xlim=(min(1.0, lasts['rki'].min()), 
                     lasts['rki'].max()), legend=False, grid=False, ylabel="",
-                    title="Die Bundesländer im Rennen auf R=0.0\nRKI, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
+                    title="Die Bundesländer im Rennen auf R=0.0\nFälle nach 4 Tagen pro Infizierten, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
@@ -227,19 +225,17 @@ def plot_press_chronic():
     de = entorb.to_dataframe('DE-total')
     
     rs1 = polynomial_r(de)
-    rs2 = rki_r(de)
+    rs2 = weekly_r(de)
     news = pd.read_csv('data/chronic_de.tsv', sep="\\t", usecols=['Datum', 'Ereignis'], engine='python')
     news['Datum'] = pd.to_datetime(news['Datum'], format='%Y-%m-%d')
     news = news.set_index('Datum')
 
-    shifted1 = rs1['Cases'].shift(-DAYS_INFECTION_TILL_SYMPTOM)
-    shifted2 = rs2['Cases'].shift(-DAYS_INFECTION_TILL_SYMPTOM)
     fig, ax = plt.subplots()
-    ax.plot(shifted1, shifted1.index, label='Logistisch')
-    ax.plot(shifted2, shifted2.index, label='RKI')
-    ax.set_title("Fall-Rate (%d Tage vorversetzt). Links: COVID-19-Chronik der FAZ" % DAYS_INFECTION_TILL_SYMPTOM)
+    rs1['Cases'].transpose().plot(ax=ax, label='Logistisch')
+    rs2['Cases'].transpose().plot(ax=ax, secondary_x=True, label='Wochenfälle je 100 000 Ew.')
+    ax.set_title("Fall-Rate. COVID-19-Chronik der FAZ")
     ax.set_yticks(news.index)
-    ax.set_ylim(news.index.max() + timedelta(days=4), shifted1.index.min())
+    ax.set_ylim(news.index.max() + timedelta(days=4), rs1['Cases'].index.min())
     ax.set_yticklabels(news['Ereignis'])
     ax.grid()
     ax.set_ylabel('')
