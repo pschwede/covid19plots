@@ -59,7 +59,7 @@ def rki_r(df, generation_time=DAYS_INFECTION_TILL_SYMPTOM):
     return rs
 
 
-def weekly_r(df):
+def weekly_r(df, population):
     """
     Number of infections per 100k people in a week. Resamples to 7 days.
 
@@ -72,7 +72,7 @@ def weekly_r(df):
     """
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
-        rs[col] = df[col+'_New_Per_Million'].rolling("7D").sum() / 10.
+        rs[col] = df[col+'_New'].rolling("7D").sum() / population * 1e6
     return rs
 
 
@@ -144,7 +144,7 @@ def plot_weekly_r(col='Cases', ncols=4):
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area)
-        rs = weekly_r(de)
+        rs = weekly_r(de, DE_STATE_POPULATION[area])
         rs[col].plot(ax=ax, title=DE_STATE_NAMES[area])
     fig.suptitle("Weekly new cases")
     fig.set_size_inches(16,16)
@@ -178,7 +178,7 @@ def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
         lasts['rki'].append(rs[col].values[-1])
         rs[col].plot(ax=ax, ylim=(0,5), label="rki", sharex=True, sharey=True)
 
-        rs = weekly_r(de)
+        rs = weekly_r(de, population[DE_STATE_NAMES[area]])
         lasts['weekly'].append(rs[col].values[-1])
         ax2 = rs[col].plot(ax=ax, label="weekly", sharex=True, sharey=True, secondary_y=True)
 
