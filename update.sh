@@ -38,4 +38,4 @@ ENVACT="env/bin/activate"
 	fi
 
 	cd -
-} 1>&2 2>$HERE/update.log
+} 2>&1 >$HERE/update.log

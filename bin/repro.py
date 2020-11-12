@@ -140,15 +140,12 @@ def plot_weekly_r(col='Cases', ncols=4):
     Return:
         Figure
     """
-    lasts = []
-    lasts_rki = []
     areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area)
         rs = weekly_r(de)
-        lasts.append(rs[col].tail(1).values[0])
-        rs[col].plot(ax=ax, title="%s" % DE_STATE_NAMES[area])
+        rs[col].plot(ax=ax, title=DE_STATE_NAMES[area])
     fig.suptitle("Weekly new cases")
     fig.set_size_inches(16,16)
     fig.tight_layout()
@@ -251,32 +248,33 @@ def main():
     if len(sys.argv) < 3:
         print("USAGE: %s F OUTFILE [F OUTFILE [...]]" % sys.argv[0])
         print("Values for F:")
-        for i,x in enumerate([ \
+        for x in [ \
                 plot_rki_and_logistic_total, \
                 plot_rki_and_logistic, \
                 logistic_bars, \
                 rki_bars, \
-                plot_press_chronic]):
+                weekly_bars, \
+                plot_press_chronic]:
             print("%d: %s%s ", i, x.__name__, x.__doc__)
         sys.exit(2)
 
     with plt.style.context('ggplot'):
         for i in range(1, len(sys.argv), 2):
-            if sys.argv[i] in ["0", plot_rki_and_logistic_total.__name__]:
+            if sys.argv[i] == plot_rki_and_logistic_total.__name__:
                 fig = plot_rki_and_logistic_total()
-            elif sys.argv[i] in ["6", plot_press_chronic.__name__]:
+            elif sys.argv[i] == plot_press_chronic.__name__:
                 fig = plot_press_chronic()
-            elif sys.argv[i] in ["5", plot_weekly_r.__name__]:
+            elif sys.argv[i] == plot_weekly_r.__name__:
                 fig = plot_weekly_r()
             else:
                 fig, lasts = plot_rki_and_logistic()
-                if sys.argv[i] in ["1", plot_rki_and_logistic.__name__]:
+                if sys.argv[i] == plot_rki_and_logistic.__name__:
                     """pass"""
-                elif sys.argv[i] in ["2", logistic_bars.__name__]:
+                elif sys.argv[i] == logistic_bars.__name__:
                     fig = logistic_bars(lasts)
-                elif sys.argv[i] in ["3", rki_bars.__name__]:
+                elif sys.argv[i] == rki_bars.__name__:
                     fig = rki_bars(lasts)
-                elif sys.argv[i] in ["4", weekly_bars.__name__]:
+                elif sys.argv[i] == weekly_bars.__name__:
                     fig = weekly_bars(lasts)
             print("saving", sys.argv[i+1])
             fig.savefig(sys.argv[i+1], bbox_inches='tight')
