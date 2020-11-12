@@ -72,7 +72,7 @@ def weekly_r(df, population):
     """
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
-        rs[col] = df[col+'_New'].rolling("7D").sum() / population * 1e6
+        rs[col] = df[col].diff().rolling("7D").sum() / population * 1e5
     return rs
 
 

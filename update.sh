@@ -14,7 +14,7 @@ fi
 scrape/divi.py data/divi.tsv \
 && git add data/divi.tsv
 
-	# plot_press_chronic img/plot_press_chronic.svg \
+	# plot_press_chronic img/plot_press_chronic.svg
 time bin/repro.py \
 	plot_rki_and_logistic_total img/rki_and_logistic_total.svg \
 	plot_rki_and_logistic img/rki_and_logistic.svg \
