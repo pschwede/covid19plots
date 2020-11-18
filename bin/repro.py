@@ -14,6 +14,9 @@ def polynomial_r(df, population=DE_POPULATION, generation_time=DAYS_INFECTION_TI
     """
     Reproduction rate using logistic map
 
+    `n(t+1) = r * n(t) * (1 - n(t)/K)`
+    `r = n(t+1) / (n(t) - n(t)**2)`
+
     Args:
         df (DataFrame): data
         population (int): total infectable population
@@ -26,9 +29,8 @@ def polynomial_r(df, population=DE_POPULATION, generation_time=DAYS_INFECTION_TI
     rs = pd.DataFrame()
     for col in ['Deaths', 'Cases']:
         try:
-            normalized = df[col] / population
-            earlier = normalized.shift(generation_time)
-            rs[col] = normalized / (earlier - earlier**2)
+            earlier = df[col].shift(generation_time)
+            rs[col] = (df[col] * population) / (earlier * (-df[col] + population))
         except KeyError as e:
             """pass"""
     return rs
@@ -144,7 +146,7 @@ def plot_weekly_r(col='Cases', ncols=4):
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
         de = entorb.to_dataframe(area)
-        rs = weekly_r(de, DE_STATE_POPULATION[area])
+        rs = weekly_r(de, DE_STATE_POPULATION[DE_STATE_NAMES[area]])
         rs[col].plot(ax=ax, title=DE_STATE_NAMES[area])
     fig.suptitle("Weekly new cases")
     fig.set_size_inches(16,16)
