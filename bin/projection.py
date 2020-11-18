@@ -25,7 +25,7 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
     done = set()
 
     fig, axes = plt.subplots(nrows=2, sharex=True, figsize=(10,9))
-    for factor, interval in [(1, 1), (1, 7), (1, 14), (4, 7)]:
+    for factor, interval in [(1, 1), (1, 7), (3, 7), (4, 7)]:
         df = de * factor
         rs = polynomial_r(df, population=population, generation_time=1)
         
