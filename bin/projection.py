@@ -58,8 +58,64 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
     fig.suptitle(("COVID-19 spread projection using Logistic map\n"
         "assuming a carrying capacity of K=%dM people and dt=%dD tick time.\n"
         "created: %s"
-        "author: @pschwede, "
-        "source: JHU CSSE via @entorb & @pomber.") \
+        " author: @pschwede,"
+        " source: JHU CSSE via @entorb & @pomber.") \
+                % (population/1e6, DAYS_INFECTION_TILL_SYMPTOM, str(now)[:10]))
+
+    fig.tight_layout(rect=(0, 0.03, 1, 0.95))
+    fig.autofmt_xdate()
+    return fig
+
+
+def plot_future_unld(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=False):
+    """
+    """
+    fig, axes = plt.subplots(nrows=2, sharex=True, figsize=(10,9))
+
+    FACTOR = 3
+    
+    df = de * FACTOR
+    rs = polynomial_r(df, population=population, generation_time=1)
+    
+    contemp_r = rs[col].values[-1]
+    r = contemp_r
+
+    now = de.reset_index()['Date'].tail(1).values[0]
+    date_range = pd.date_range(start=now, \
+            periods=FUTURE_RANGE/1, \
+            freq="%dD" % 1)
+
+    n = list()
+    for i, _ in enumerate(date_range):
+        if i == 0:
+            n.append(df[col].tail(1).values[0])
+            continue
+        # apply gov rules at turning point when weekly infections per 100000 sink below 100
+        if i > 8 and 50 <= 1e5*(n[-7]-n[-1])/population <= 100:
+            r = 1.6
+        else:
+            r = contemp_r
+        n.append(max(n[-1], r * n[-1] * (1. - n[-1]/population)))
+
+    proj_col = "Projected %s x%d (last 1D avg rate)" % (col, FACTOR)
+    proj = pd.DataFrame({ 'Date': date_range, proj_col: n }) \
+            .set_index('Date')
+
+    for d, c in [(df, col), (proj, proj_col)]:
+        d[c].plot(ax=axes[0], logy=LOG, label="%s x%d" % (c, FACTOR))
+        d[c].diff(1).plot(ax=axes[1], logy=LOG, label="%s x%d" % (c, FACTOR))
+
+    axes[0].grid()
+    axes[0].set_ylabel("Total")
+    axes[1].grid()
+    axes[1].set_ylabel("Daily")
+    axes[1].legend(handles=axes[1].lines, loc='best')
+
+    fig.suptitle(("COVID-19 spread projection using Logistic map\n"
+        "assuming a carrying capacity of K=%dM people and dt=%dD tick time.\n"
+        "created: %s"
+        " author: @pschwede,"
+        " source: JHU CSSE via @entorb & @pomber.") \
                 % (population/1e6, DAYS_INFECTION_TILL_SYMPTOM, str(now)[:10]))
 
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
@@ -70,11 +126,12 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
 def main():
     import sys
     if len(sys.argv) < 2:
-        print("USAGE: %s OUTFILE" % sys.argv[0])
+        print("USAGE: %s OUTFILEprojection1 OUTFILEfuture_unld2" % sys.argv[0])
         sys.exit(2)
     de = entorb.to_dataframe('DE-total')
     with plt.style.context('ggplot'):
         plot_projection(de, DE_POPULATION).savefig(sys.argv[1], bbox_inches='tight')
+        plot_future_unld(de, DE_POPULATION).savefig(sys.argv[2], bbox_inches='tight')
 
 
 if __name__ == "__main__":
