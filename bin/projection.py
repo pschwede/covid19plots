@@ -131,7 +131,7 @@ def main():
     de = entorb.to_dataframe('DE-total')
     with plt.style.context('ggplot'):
         plot_projection(de, DE_POPULATION).savefig(sys.argv[1], bbox_inches='tight')
-        plot_future_unld(de, DE_POPULATION).savefig(sys.argv[2], bbox_inches='tight')
+        plot_projection(entorb.to_dataframe(nation='US'), 329e6).savefig(sys.argv[2], bbox_inches='tight')
 
 
 if __name__ == "__main__":
