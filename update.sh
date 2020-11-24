@@ -23,7 +23,7 @@ time bin/repro.py \
 	weekly_bars img/weekly_bars.svg \
 	plot_weekly_r img/plot_weekly_r.svg
 time bin/lethality.py lethality_mass_plot img/lethality.svg
-time bin/projection.py img/projection.svg img/projection-us.svg
+time bin/projection.py img/projection.svg img/projection-bl.svg img/projection-us.svg
 # time bin/source_comparison.py img/source_deltas.png
 # time bin/correlate.py img/correlate.png
 
