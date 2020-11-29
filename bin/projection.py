@@ -11,12 +11,12 @@ from repro import polynomial_r
 FUTURE_RANGE = 5 * 365
 
 
-def plot_projections(des, populations, col='Cases', future_range=FUTURE_RANGE, LOG=False):
+def plot_projections(names, des, populations, col='Cases', future_range=FUTURE_RANGE, LOG=False):
     """
     Plot graphs of four rates.
     """
     fig, axes = plt.subplots(nrows=int(len(des)/4), ncols=4, sharex=True, sharey=True, figsize=(16,16))
-    for de, population, ax in zip(des, populations, axes.flat):
+    for name, de, population, ax in zip(names, des, populations, axes.flat):
         de = de.drop(columns=[c for c in de.columns if c != col]).rolling('7D').mean()
 
         now = de.reset_index()['Date'].tail(1).values[0]
@@ -27,7 +27,7 @@ def plot_projections(des, populations, col='Cases', future_range=FUTURE_RANGE, L
 
         done = set()
 
-        for factor, interval in [(1, 1), (1, 7), (3, 7), (4, 7)]:
+        for factor, interval in [(1, 1), (3, 1)]:
             df = de * factor
             rs = polynomial_r(df, population=population, generation_time=1)
             
@@ -48,7 +48,7 @@ def plot_projections(des, populations, col='Cases', future_range=FUTURE_RANGE, L
                 if (c, factor) in done:
                     continue
                 #d[c].plot(ax=ax, logy=LOG, label=(("%s x%d" % (c, factor)) if (c==col and factor!=1) else c))
-                d[c].diff(1).plot(ax=ax, logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c)
+                d[c].diff(1).plot(ax=ax, logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c, title=name)
                 done.add((c, factor))
 
             ax.grid()
@@ -188,10 +188,11 @@ def main():
     de = entorb.to_dataframe('DE-total')
     with plt.style.context('ggplot'):
         plot_projection(de, DE_POPULATION).savefig(sys.argv[1], bbox_inches='tight')
+        DE_STATE_NAMES,
         plot_projections([entorb.to_dataframe(s) for s in DE_STATE_NAMES], \
                 [DE_STATE_POPULATION[DE_STATE_NAMES[s]] for s in DE_STATE_NAMES]) \
                 .savefig(sys.argv[2], bbox_inches='tight')
-        plot_projection(entorb.to_dataframe(nation='US'), 329e6).savefig(sys.argv[3], bbox_inches='tight')
+        plot_projection(de=entorb.to_dataframe(nation='US'), population=329e6).savefig(sys.argv[3], bbox_inches='tight')
 
 
 if __name__ == "__main__":

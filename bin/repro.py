@@ -27,7 +27,7 @@ def polynomial_r(df, population=DE_POPULATION, generation_time=DAYS_INFECTION_TI
         `Cases`
     """
     rs = pd.DataFrame()
-    for col in ['Deaths', 'Cases']:
+    for col in ['Cases']:
         try:
             earlier = df[col].shift(generation_time)
             rs[col] = (df[col] * population) / (earlier * (-df[col] + population))
