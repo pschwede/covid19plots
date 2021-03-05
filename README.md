@@ -6,7 +6,7 @@
 
 [**Scatter-Matrix:**](https://github.com/pschwede/covid19plots/blob/master/scatter_matrix.ipynb) Does the number of cases in intensive care correlate well with the number positive diagnoses? Also, how many days remain until death?
 
-[**Correlate World Data:**](https://github.com/pschwede/covid19plots/blob/master/doc/correlate.md) Where in the world hits COVID-19 the hardest and why?
+~[**Correlate World Data:**](https://github.com/pschwede/covid19plots/blob/master/doc/correlate.md) Where in the world hits COVID-19 the hardest and why?~
 
 #### Trends
 
@@ -16,7 +16,7 @@
 
 [**Countries in Comparison:**](https://github.com/pschwede/covid19plots/blob/master/countries_in_comparison.ipynb) Did you know that apparently ~3x~ 5x more people per million died due to COVID-19 in Sweden than in Germany?
 
-[**German Headlines**](https://github.com/pschwede/covid19plots/blob/master/topst_headlines.ipynb) How did media react to COVID-19?
+~[**German Headlines**](https://github.com/pschwede/covid19plots/blob/master/topst_headlines.ipynb) How did media react to COVID-19?~
 
 [**Total VS Week:**](https://github.com/pschwede/covid19plots/blob/master/sum_vs_window.ipynb) It's a simple thought: The more people have been infected, the more people should get infected the next week. However, as soon the relation ceases to hold, the vicious circle stops. I plot [those graphs](https://aatishb.com/covidtrends/) for German federal states.
 
