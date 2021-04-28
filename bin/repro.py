@@ -192,7 +192,7 @@ def logistic_bars(lasts, title='Infektionen'):
             .drop(columns=[x for x in lasts.columns if x != 'logistic']) \
             .sort_values('logistic') \
             .plot(kind='barh', xlim=(min(1.0, lasts['logistic'].min()),
-                    lasts['logistic'].max()), legend=False, grid=False, ylabel="",
+                    lasts['logistic'].max()), legend=False, grid=False, 
                     title="Die Bundesländer im Rennen auf R=1.0\nLogistisch, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
@@ -203,7 +203,7 @@ def rki_bars(lasts, title='Infektionen'):
             .drop(columns=[x for x in lasts.columns if x != 'rki']) \
             .sort_values('rki') \
             .plot(kind='barh', xlim=(min(1.0, lasts['rki'].min()), 
-                    lasts['rki'].max()), legend=False, grid=False, ylabel="",
+                    lasts['rki'].max()), legend=False, grid=False, 
                     title="Die Bundesländer im Rennen auf R=0.0\nFälle nach 4 Tagen pro Infizierten, %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
@@ -214,7 +214,7 @@ def weekly_bars(lasts, title="Infektionen"):
             .drop(columns=[x for x in lasts.columns if x != 'weekly']) \
             .sort_values('weekly') \
             .plot(kind='barh', xlim=(min(1.0, lasts['weekly'].min()),
-                lasts['weekly'].max()), ylabel="", legend=False, grid=False,
+                lasts['weekly'].max()),  legend=False, grid=False,
                 title="Die Bundesländer im Rennen auf R=0.0\nFälle pro Woche und 100 000 Ew., %s, Stand: %s" % (title, datetime.now().strftime('%Y-%m-%d')))
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
