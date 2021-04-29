@@ -18,4 +18,20 @@ For plotting, I weighted those three values
 
 ## Plots
 
-
+![](../img/divi-hbars.svg)
+![](../img/diviBB.svg)
+![](../img/diviBE.svg)
+![](../img/diviBW.svg)
+![](../img/diviBY.svg)
+![](../img/diviHB.svg)
+![](../img/diviHE.svg)
+![](../img/diviHH.svg)
+![](../img/diviMV.svg)
+![](../img/diviNI.svg)
+![](../img/diviNW.svg)
+![](../img/diviRP.svg)
+![](../img/diviSH.svg)
+![](../img/diviSL.svg)
+![](../img/diviSN.svg)
+![](../img/diviST.svg)
+![](../img/diviTH.svg)

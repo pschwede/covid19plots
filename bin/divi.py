@@ -39,20 +39,18 @@ def load_tsv():
                 'BEGRENZT': 0.5,
                 'NICHT_VERFUEGBAR': 0.0
                 })
-    df = df.drop_duplicates()
     df['Stand'] = pd.to_datetime(df['Stand'], format="%Y-%m-%d %H:%M:%S")
     return df
 
 
-def plot_german_hbars(df, fname):
+def plot_german_hbars(dataframe, fname):
     """Plot a horizontal bar for each federal state."""
-    df = df[(df['Stand'] > '2019-12-31') & (df['Stand'] <= datetime.now())].set_index('Stand') \
+    df = dataframe[(dataframe['Stand'] > '2019-12-31') & (dataframe['Stand'] <= datetime.now())].set_index('Stand') \
             .drop(columns='COVID-19 cases')
 
     fig, ax = plt.subplots()
     df \
-            .groupby('Bundesland').mean().reset_index() \
-            .resample('D', on='Stand') \
+            .groupby(['Bundesland']).mean().reset_index() \
             .plot(kind='barh', ax=ax, x='Bundesland', y=['ECMO', 'ICU high care', 'ICU low care'], stacked=True, figsize=(8,8))
     ax.set_title("German mean hospital occupancy")
     ax.set_xticks([0.0, 1.5, 3.0])
@@ -60,31 +58,20 @@ def plot_german_hbars(df, fname):
     ax.set_ylabel("federal state")
     fig.savefig(fname)
     
-def plot_history(df, fname):
+def plot_history(dataframe, fname):
     """Plot each federal state's total exhaustion from @entorb but also keep each curve in
     dict bundesland_curves for later correlations"""
-    columns = ['ICU low care', 'ICU high care', 'ECMO']
     availability = dict()
-    num_clinics = dict()
-    infections = dict()
     deaths = dict()
 
-    for federal_state in federal_state_translation:
-        clinics_curves_sum = None
-        federal_state_clinics = list(set(df[df['Bundesland'] == federal_state]['Klinikname']))
-        # apply padding
-        for clinic in federal_state_clinics:
-            clinic_curve = df[df['Klinikname'] == clinic] \
-                    .drop(columns=['Bundesland', 'Klinikname']) \
-                    .bfill()
-            clinics_curves_sum = clinic_curve if clinics_curves_sum is None else clinics_curves_sum.add(clinic_curve, fill_value=0.5)
-            availability[federal_state] = clinics_curves_sum
-            num_clinics[federal_state] = len(federal_state_clinics)
-            #infections[federal_state] = entorb.to_dataframe(federal_state)['Cases_New']
-            deaths[federal_state] = entorb.to_dataframe(federal_state)['Deaths_New']
-            deaths[federal_state].name = 'Deaths'
+    df = dataframe.set_index('Stand').bfill()
 
-    for federal_state in sorted(federal_states):
+    for federal_state in federal_state_translation:
+        availability[federal_state] = df[df['Bundesland'] == federal_state].resample('D').mean()
+        deaths[federal_state] = entorb.to_dataframe(federal_state)['Deaths_New']
+        deaths[federal_state].name = 'Deaths'
+
+    for federal_state in sorted(list(federal_state_translation.keys())):
         fig, ax = plt.subplots()
 
         ax = deaths[federal_state].plot(kind='line', ax=ax, color='grey', linestyle=':', marker='+', legend=True, figsize=(16,9))
@@ -92,18 +79,18 @@ def plot_history(df, fname):
 
         ax = availability[federal_state].plot(kind='line', ax=ax, secondary_y=True, marker='') # drawstyle=steps-post
         ax.set_yticks([
-            0.0 * num_clinics[federal_state],
-            0.5 * num_clinics[federal_state],
-            1.0 * num_clinics[federal_state],
+            0.0, # * num_clinics[federal_state],
+            0.5, # * num_clinics[federal_state],
+            1.0, # * num_clinics[federal_state],
             ])
-        ax.set_ytickslabels(["available", "limited", "unavailable"])
+        ax.set_yticklabels(["available", "limited", "unavailable"])
         ax.set_title("%s" % federal_state_translation[federal_state])
 
         fig.savefig(fname % {'state': federal_state})
-        return
 
 
 if __name__ == "__main__":
+    import sys
     df = load_tsv()
-    plot_german_hbars(df, fname="img/hbars.svg")
-    plot_history(df=df, fname="test.svg") 
+    plot_german_hbars(dataframe=df, fname=sys.argv[1])
+    plot_history(dataframe=load_tsv(), fname=sys.argv[2]) 

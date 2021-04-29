@@ -24,6 +24,7 @@ time bin/repro.py \
 	plot_weekly_r img/plot_weekly_r.svg
 time bin/lethality.py lethality_mass_plot img/lethality.svg
 time bin/projection.py img/projection.svg img/projection-bl.svg img/projection-us.svg
+time bin/divi.py img/divi-hbars.svg "img/divi%(state)s.svg"
 # time bin/source_comparison.py img/source_deltas.png
 # time bin/correlate.py img/correlate.png
 
