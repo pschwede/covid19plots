@@ -8,7 +8,7 @@ from common import *
 from scrape import entorb
 from repro import polynomial_r
 
-FUTURE_RANGE = 5 * 365
+FUTURE_RANGE = 1 * 365
 
 
 def plot_projections(names, des, populations, col='Cases', future_range=FUTURE_RANGE, LOG=False):
@@ -27,7 +27,7 @@ def plot_projections(names, des, populations, col='Cases', future_range=FUTURE_R
 
         done = set()
 
-        for factor, interval in [(1, 1), (3, 1)]:
+        for factor, interval in [(1, 1)]:
             df = de * factor
             rs = polynomial_r(df, population=population, generation_time=1)
             
@@ -82,7 +82,7 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
     done = set()
 
     fig, axes = plt.subplots(nrows=2, sharex=True, figsize=(10,9))
-    for factor, interval in [(1, 1), (1, 7), (3, 7), (4, 7)]:
+    for factor, interval in [(1, 1)]:
         df = de * factor
         rs = polynomial_r(df, population=population, generation_time=1)
         
