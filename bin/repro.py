@@ -110,6 +110,7 @@ def plot_rki_and_logistic_total(state='DE-total'):
     fig.tight_layout()
     return fig
 
+
 def plot_r(population=DE_POPULATION):
     lasts = []
     lasts_rki = []
@@ -130,6 +131,7 @@ def plot_r(population=DE_POPULATION):
     fig.set_size_inches(16,16)
     fig.tight_layout()
     return fig, lasts, lasts_rki
+
 
 def plot_weekly_r(col='Cases', ncols=4):
     """
@@ -187,6 +189,7 @@ def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
     fig.set_size_inches(16,16)
     return fig, pd.DataFrame(lasts).set_index('area')
 
+
 def logistic_bars(lasts, title='Infektionen'):
     ax = lasts \
             .drop(columns=[x for x in lasts.columns if x != 'logistic']) \
@@ -197,6 +200,7 @@ def logistic_bars(lasts, title='Infektionen'):
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
+
 
 def rki_bars(lasts, title='Infektionen'):
     ax = lasts \
@@ -209,6 +213,7 @@ def rki_bars(lasts, title='Infektionen'):
     fig.set_size_inches(9,9)
     return fig
 
+
 def weekly_bars(lasts, title="Infektionen"):
     ax = lasts \
             .drop(columns=[x for x in lasts.columns if x != 'weekly']) \
@@ -219,6 +224,7 @@ def weekly_bars(lasts, title="Infektionen"):
     fig = ax.get_figure()
     fig.set_size_inches(9,9)
     return fig
+
 
 def plot_press_chronic():
     de = entorb.to_dataframe('DE-total')
@@ -244,6 +250,7 @@ def plot_press_chronic():
     fig.set_size_inches(9,16)
     
     return fig
+
 
 def main():
     import sys
