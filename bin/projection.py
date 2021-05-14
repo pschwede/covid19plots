@@ -17,7 +17,7 @@ def plot_projections(names, des, populations, col='Cases', future_range=FUTURE_R
     """
     fig, axes = plt.subplots(nrows=int(len(des)/4), ncols=4, sharex=True, sharey=True, figsize=(16,16))
     for name, de, population, ax in zip(names, des, populations, axes.flat):
-        de = de.drop(columns=[c for c in de.columns if c != col]).rolling('7D').mean()
+        de = de.drop(columns=[c for c in de.columns if c != col and c != col+"_New"]).rolling('7D').mean()
 
         now = de.reset_index()['Date'].tail(1).values[0]
 
@@ -43,12 +43,13 @@ def plot_projections(names, des, populations, col='Cases', future_range=FUTURE_R
             proj_col = "Projected %s%s (last %dD avg rate)" % (col, '' if factor==1 else (' x' + str(factor) + ', '), interval)
             proj = pd.DataFrame({ 'Date': date_range, proj_col: n }) \
                     .set_index('Date')
+            proj[proj_col+"_New"] = proj[proj_col].diff(1)
 
             for d,c in [(df, col), (proj, proj_col)]:
                 if (c, factor) in done:
                     continue
                 #d[c].plot(ax=ax, logy=LOG, label=(("%s x%d" % (c, factor)) if (c==col and factor!=1) else c))
-                d[c].diff(1).plot(ax=ax, logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c, title=name)
+                d[c+"_New"].plot(ax=ax, logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c, title=name)
                 done.add((c, factor))
 
             ax.grid()
@@ -71,7 +72,7 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
     """
     Plot graphs of four rates.
     """
-    de = de.drop(columns=[c for c in de.columns if c != col]).rolling('7D').mean()
+    de = de.drop(columns=[c for c in de.columns if c != col and c != col+"_New"]).rolling('7D').mean()
 
     now = de.reset_index()['Date'].tail(1).values[0]
 
@@ -98,12 +99,13 @@ def plot_projection(de, population, col='Cases', future_range=FUTURE_RANGE, LOG=
         proj_col = "Projected %s%s (last %dD avg rate)" % (col, '' if factor==1 else (' x' + str(factor) + ', '), interval)
         proj = pd.DataFrame({ 'Date': date_range, proj_col: n }) \
                 .set_index('Date')
+        proj[proj_col+"_New"] = proj[proj_col].diff(1)
 
         for d,c in [(df, col), (proj, proj_col)]:
             if (c, factor) in done:
                 continue
             d[c].plot(ax=axes[0], logy=LOG, label=(("%s x%d" % (c, factor)) if (c==col and factor!=1) else c))
-            d[c].diff(1).plot(ax=axes[1], logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c)
+            d[c+"_New"].plot(ax=axes[1], logy=LOG, label=("%s x%d" % (c, factor)) if (c==col and factor!=1) else c)
             done.add((c, factor))
 
     axes[0].grid()
@@ -157,10 +159,11 @@ def plot_future_unld(de, population, col='Cases', future_range=FUTURE_RANGE, LOG
     proj_col = "Projected %s x%d (last 1D avg rate)" % (col, FACTOR)
     proj = pd.DataFrame({ 'Date': date_range, proj_col: n }) \
             .set_index('Date')
+    proj[proj_col+"_New"] = proj[proj_col].diff(1)
 
     for d, c in [(df, col), (proj, proj_col)]:
         d[c].plot(ax=axes[0], logy=LOG, label="%s x%d" % (c, FACTOR))
-        d[c].diff(1).plot(ax=axes[1], logy=LOG, label="%s x%d" % (c, FACTOR))
+        d[c+"_New"].plot(ax=axes[1], logy=LOG, label="%s x%d" % (c, FACTOR))
 
     axes[0].grid()
     axes[0].set_ylabel("Total")
