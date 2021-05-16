@@ -362,9 +362,9 @@ def main():
             except ValueError:
                 pass
         i = sys.argv.index("plot_rank_inzidenz")
-        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nInzidenz (niedriger ist besser), Daten via @entorb', func=weekly_r).savefig(sys.argv[i+1]) # , bbox_inches='tight')
+        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nInzidenz (niedriger ist besser), Daten via @entorb', func=weekly_r).savefig(sys.argv[i+1])
         i = sys.argv.index("plot_rank_logistic")
-        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nLogistische Reproduktionsrate (niederiger ist besser), Daten via @entorb', func=polynomial_r).savefig('logistic.png') # , bbox_inches='tight')
+        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nLogistische Reproduktionsrate (niederiger ist besser), Daten via @entorb', func=polynomial_r).savefig(sys.argv[i+1])
     sys.exit(0)
 
 if __name__ == "__main__":
