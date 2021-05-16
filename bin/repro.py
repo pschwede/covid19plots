@@ -88,7 +88,13 @@ def plot_rki_and_logistic_total(state='DE-total'):
     Return:
         Figure
     """
-    de = entorb.to_dataframe(state)
+    global cached_dfs
+    de = None
+    if state in cached_dfs:
+        de = entorb.to_dataframe(state)
+        cached_dfs[state] = de
+    else:
+        de = cached_dfs[state]
 
     fig, ax = plt.subplots()
     ax2 = ax.twinx()
@@ -111,14 +117,20 @@ def plot_rki_and_logistic_total(state='DE-total'):
     return fig
 
 
-def plot_r(population=DE_POPULATION):
+def plot_r(col='Cases', population=DE_POPULATION):
+    global cached_dfs
     lasts = []
     lasts_rki = []
     areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
-        de = entorb.to_dataframe(area).rolling('7D').mean()
-        
+        de = None
+        if area in cached_dfs:
+            de = cached_dfs[area]
+        else:
+            de = entorb.to_dataframe(area).rolling('7D').mean()
+            cached_dfs[area] = de
+
         rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
         lasts.append(rs[col].tail(1).values[0])
 
@@ -144,10 +156,16 @@ def plot_weekly_r(col='Cases', ncols=4):
     Return:
         Figure
     """
+    global cached_dfs
     areas = sorted([x for x in DE_STATE_NAMES])
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
-        de = entorb.to_dataframe(area)
+        de = None
+        if area in cached_dfs:
+            de = cached_dfs[area]
+        else:
+            de = entorb.to_dataframe(area)
+            cached_dfs[area] = de
         rs = weekly_r(de, DE_STATE_POPULATION[DE_STATE_NAMES[area]])
         rs[col].plot(ax=ax, title=DE_STATE_NAMES[area])
     fig.suptitle("Weekly new cases")
@@ -167,11 +185,17 @@ def plot_rki_and_logistic(col='Cases', ncols=4, population=DE_STATE_POPULATION):
     Return:
         Tuple of a Figure, a list of last logistical rates and a list of last rki values
     """
+    global cached_dfs
     areas = sorted([x for x in DE_STATE_NAMES])
     lasts = {'area': areas, 'logistic': [], 'rki': [], 'weekly': []}
     fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
     for i, (ax, area) in enumerate(zip(axes.flat, areas)):
-        de = entorb.to_dataframe(area).rolling('7D').mean()
+        de = None
+        if area in cached_dfs:
+            de = cached_dfs[area].rolling('7D').mean()
+        else:
+            cached_dfs[area] = entorb.to_dataframe(area)
+        de = cached_dfs[area].rolling('7D').mean()
 
         rs = polynomial_r(de, population[DE_STATE_NAMES[area]])
         lasts['logistic'].append(rs[col].values[-1])
@@ -202,6 +226,39 @@ def logistic_bars(lasts, title='Infektionen'):
     return fig
 
 
+def plot_rank(title='Inzidenz', func=weekly_r,
+              states=DE_STATE_NAMES, population=DE_STATE_POPULATION):
+    global cached_dfs
+
+    fig, axes = plt.subplots(nrows=4, ncols=4, sharex=True, sharey=True)
+
+    de = None
+    for iso, state in states.items():
+        if iso not in cached_dfs:
+            cached_dfs[iso] = entorb.to_dataframe(iso)
+        if de is None:
+            de = func(cached_dfs[iso], population=population[state])
+            de.drop(columns=[c for c in de.columns if c != 'Cases'])
+            de.rename(columns={'Cases': state}, inplace=True)
+        else:
+            de[state] = func(cached_dfs[iso],
+                             population=population[state])['Cases']
+    rnk = de.rank(axis=1).rolling('30D').mean()
+
+    ax_idx = 0
+    for iso, state in states.items():
+        rnk[state].plot(kind='line',
+                        ax=axes.flat[ax_idx],
+                        title=state,
+                        legend=None)
+        ax_idx += 1
+
+    fig.suptitle(title)
+    fig.set_size_inches(16, 16)
+    fig.tight_layout()
+    return fig
+
+
 def rki_bars(lasts, title='Infektionen'):
     ax = lasts \
             .drop(columns=[x for x in lasts.columns if x != 'rki']) \
@@ -227,8 +284,13 @@ def weekly_bars(lasts, title="Infektionen"):
 
 
 def plot_press_chronic():
-    de = entorb.to_dataframe('DE-total')
-    
+    global cached_dfs
+    de = None
+    if 'DE-total' in cached_dfs:
+        de = cached_dfs['DE-total']
+    else:
+        de = entorb.to_dataframe('DE-total')
+
     rs1 = polynomial_r(de)
     rs2 = weekly_r(de)
     news = pd.read_csv('data/chronic_de.tsv', sep="\\t", usecols=['Datum', 'Ereignis'], engine='python')
@@ -299,7 +361,12 @@ def main():
                 done.append(func)
             except ValueError:
                 pass
+        i = sys.argv.index("plot_rank_inzidenz")
+        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nInzidenz (niedriger ist besser), Daten via @entorb', func=weekly_r).savefig(sys.argv[i+1]) # , bbox_inches='tight')
+        i = sys.argv.index("plot_rank_logistic")
+        plot_rank(title='Gleitendes Mittel des Rankings der Bundesländer über die Zeit (30-Tage)\nLogistische Reproduktionsrate (niederiger ist besser), Daten via @entorb', func=polynomial_r).savefig('logistic.png') # , bbox_inches='tight')
     sys.exit(0)
 
 if __name__ == "__main__":
+    cached_dfs = dict()
     main()
