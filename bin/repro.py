@@ -90,7 +90,7 @@ def plot_rki_and_logistic_total(state='DE-total'):
     """
     global cached_dfs
     de = None
-    if state in cached_dfs:
+    if state not in cached_dfs:
         de = entorb.to_dataframe(state)
         cached_dfs[state] = de
     else:
