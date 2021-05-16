@@ -16,4 +16,6 @@ This r-value has a way smoother curve (red) than the 4-days incidence (blue), th
 
 ![German districts in the race to 0.0](../img/rki_bars.svg)
 ![German districts in the race to 1.0](../img/logistic_bars.svg)
+![German districts ranked over time (Logistic rate)](../img/plot_rank_logistic.svg)
 ![German districts in the race to 0.0](../img/weekly_bars.svg)
+![German districts ranked over time (Inzidenz)](../img/plot_rank_inzidenz.svg)
